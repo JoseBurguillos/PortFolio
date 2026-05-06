@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>José Burguillos | Desarrollador Web Full Stack</title>
+  <meta name="description" content="Portfolio de José Burguillos, desarrollador web Full Stack especializado en HTML, CSS, JavaScript, Angular y Laravel.">
+  <meta name="author" content="José Burguillos">
+
+  <meta property="og:title" content="José Burguillos | Portfolio">
+  <meta property="og:description" content="Desarrollador Web Full Stack en formación y experiencia en proyectos reales.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --bg: radial-gradient(circle at top, #111, #0a0a0a);
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --card: rgba(17,17,17,0.55);
+      --border: rgba(255,255,255,0.08);
+      --title:#d1d5db;
+      --hover:#fff;
+    }
+
+    body.light{
+      --bg: linear-gradient(180deg,#f5f7fb,#e9eef5);
+      --text:#111;
+      --muted:#4b5563;
+      --card: rgba(255,255,255,0.7);
+      --border: rgba(0,0,0,0.1);
+      --title:#111;
+      --hover:#000;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+      transition:0.4s;
+    }
+
+    header{
+      padding:100px 20px 60px;
+      text-align:center;
+      position:relative;
+    }
+
+    /* SWITCH */
+    .switch{
+      position:absolute;
+      top:20px;
+      right:20px;
+      width:70px;
+      height:34px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 8px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:999px;
+      cursor:pointer;
+      backdrop-filter: blur(10px);
+    }
+
+    .switch input{display:none;}
+
+    .slider{
+      position:absolute;
+      width:26px;
+      height:26px;
+      background:#fff;
+      border-radius:50%;
+      top:3px;
+      left:4px;
+      transition:0.3s;
+    }
+
+    body.light .slider{
+      transform:translateX(36px);
+      background:#111;
+    }
+
+    .switch i{
+      font-size:14px;
+      z-index:2;
+      pointer-events:none;
+    }
+
+    .profile-img{
+      width:140px;height:140px;border-radius:50%;object-fit:cover;
+      margin-bottom:20px;border:2px solid var(--border);
+      transition:0.4s;
+    }
+
+    .profile-img:hover{transform:scale(1.08);border-color:var(--hover);}
+
+    h1{font-size:3rem;font-weight:700;transition:0.3s;}
+    h1:hover{color:var(--hover);letter-spacing:1px;}
+
+    header p{margin-top:10px;color:var(--muted);}
+
+    section{max-width:1000px;margin:auto;padding:40px 20px;}
+
+    h2{margin-bottom:20px;color:var(--title);}
+
+    .card{
+      background:var(--card);
+      backdrop-filter:blur(12px);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:25px;
+      margin-bottom:20px;
+      transition:0.35s;
+      opacity:0;
+      transform:translateY(40px);
+    }
+
+    .card.show{opacity:1;transform:translateY(0);}
+
+    /* 🔥 HOVER MEJORADO DARK/LIGHT */
+    body:not(.light) .card:hover{
+      transform:translateY(-12px) scale(1.03);
+      border-color:#ffffff55;
+      box-shadow:0 10px 30px rgba(255,255,255,0.08);
+    }
+
+    body.light .card:hover{
+      transform:translateY(-10px) scale(1.02);
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .skills{display:flex;flex-wrap:wrap;gap:10px;}
+
+    .skill{
+      background:rgba(0,0,0,0.2);
+      border:1px solid var(--border);
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:0.85rem;
+      transition:0.3s;
+    }
+
+    .skill:hover{background:var(--hover);color:#000;transform:translateY(-3px);box-shadow:0 0 18px rgba(255,255,255,0.4);}
+
+    .links{margin-top:15px;display:flex;gap:10px;}
+
+    .links a{
+      width:42px;height:42px;display:flex;align-items:center;justify-content:center;
+      border-radius:10px;border:1px solid var(--border);
+      color:var(--muted);text-decoration:none;
+      transition:0.3s;position:relative;
+    }
+
+    .links a::after{
+      content:attr(title);
+      position:absolute;bottom:120%;left:50%;transform:translateX(-50%);
+      background:#111;color:#fff;padding:4px 8px;font-size:12px;
+      border-radius:6px;opacity:0;transition:0.3s;
+    }
+
+    .links a:hover::after{opacity:1;transform:translateX(-50%) translateY(-4px);}
+
+    .links a:hover{
+      background:var(--hover);
+      color:#000;
+      transform:translateY(-3px);
+      box-shadow:0 0 18px rgba(255,255,255,0.4);
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      font-size:0.85rem;
+      color:var(--muted);
+      border-top:1px solid var(--border);
+    }
+  /* FIX HOVER LIGHT MODE (skills + icons) */
+    body.light .skill:hover{
+      background: rgba(0,0,0,0.08);
+      color: #111;
+      transform: translateY(-3px);
+      box-shadow: 0 0 18px rgba(0,0,0,0.15);
+    }
+
+    body.light .links a:hover{
+      background: rgba(0,0,0,0.08);
+      color: #111;
+      transform: translateY(-3px);
+      box-shadow: 0 0 18px rgba(0,0,0,0.15);
+    }
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <!-- SWITCH -->
+  <label class="switch">
+    <i class="fa-solid fa-moon"></i>
+    <input type="checkbox" id="themeToggle">
+    <span class="slider"></span>
+    <i class="fa-solid fa-sun"></i>
+  </label>
+
+  <img src="imagen linkedin.png" class="profile-img" alt="Foto de perfil de José Burguillos" loading="lazy">
+  <h1>José Burguillos</h1>
+  <p>Desarrollador Web Full Stack</p>
+</header>
+
+<section>
+
+  <h2>Sobre mí</h2>
+  <div class="card">
+    <p>Soy desarrollador web en formación con base en ESO, Sistemas Microinformáticos y Redes (SMR) y actualmente cursando Desarrollo de Aplicaciones Web (DAW). Me estoy especializando en desarrollo full stack con tecnologías como HTML, CSS, JavaScript, Angular y Laravel. Me considero una persona constante, autodidacta y con gran interés en entender tanto el frontend como el backend. Me adapto rápido, disfruto resolviendo problemas y busco mejorar continuamente como programador, con especial interés en nuevas tecnologías e inteligencia artificial.</p>
+  </div>
+
+  <h2>Experiencia</h2>
+  <div class="card">
+    <h3>Deuser (Indra Group)</h3>
+    <p><strong>Programador Full Stack (4 meses)</strong><br>
+    Desarrollo de funcionalidades frontend y backend<br>
+    Uso de JavaScript en proyectos reales<br>
+    Diseño y mejora de interfaces web<br>
+    Trabajo en equipo con metodologías profesionales</p>
+  </div>
+
+  <div class="card">
+    <h3>Recosur</h3>
+    <p><strong>Prácticas (3 meses)</strong><br>
+    Soporte técnico a usuarios<br>
+    Mantenimiento y configuración de equipos<br>
+    Resolución de incidencias informáticas<br>
+    Aprendizaje en entorno laboral real</p>
+  </div>
+
+  <h2>Tecnologías</h2>
+
+  <div class="card">
+    <h3>Frontend</h3>
+    <div class="skills">
+      <span class="skill">JavaScript</span>
+      <span class="skill">Angular</span>
+      <span class="skill">React</span>
+      <span class="skill">Bootstrap</span>
+      <span class="skill">Tailwind</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Backend</h3>
+    <div class="skills">
+      <span class="skill">Java</span>
+      <span class="skill">C#</span>
+      <span class="skill">PHP</span>
+      <span class="skill">Node.js</span>
+      <span class="skill">MySQL</span>
+      <span class="skill">Laravel</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>DevOps / Tools</h3>
+    <div class="skills">
+      <span class="skill">Docker</span>
+      <span class="skill">GitHub</span>
+      <span class="skill">VS Code</span>
+    </div>
+  </div>
+
+  <h2>Proyectos</h2>
+  <div class="card">
+    <div class="links" style="justify-content:center;">
+      <a href="https://github.com/JoseBurguillos078" target="_blank" title="GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
+    </div>
+  </div>
+
+  <h2>Contacto</h2>
+  <div class="card">
+    <p>Actualmente estoy en búsqueda de nuevas oportunidades laborales como desarrollador web. Si estás interesado en mi perfil, puedes contactarme directamente por correo electrónico.</p>
+    <div class="links">
+      <a href="mailto:joseab078@gmail.com" target="_blank" title="Enviar correo">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jos%C3%A9-burguillos-88834932a/" target="_blank" title="LinkedIn">
+        <i class="fa-brands fa-linkedin-in"></i>
+      </a>
+      <a href="https://github.com/JoseBurguillos078" target="_blank" title="GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 José Burguillos
+</footer>
+
+<script>
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(card => observer.observe(card));
+
+  const toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('change', () => {
+    document.body.classList.toggle('light');
+  });
+</script>
+
+</body>
+</html>
