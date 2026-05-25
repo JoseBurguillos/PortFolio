@@ -1,331 +1,1022 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>José Burguillos | Desarrollador Web Full Stack</title>
-  <meta name="description" content="Portfolio de José Burguillos, desarrollador web Full Stack especializado en HTML, CSS, JavaScript, Angular y Laravel.">
+  <meta name="description" content="Portfolio de José Burguillos, desarrollador web Full Stack con experiencia en proyectos reales y tecnologías como HTML, CSS, JavaScript, Angular, React, PHP, Laravel y Docker.">
   <meta name="author" content="José Burguillos">
 
   <meta property="og:title" content="José Burguillos | Portfolio">
-  <meta property="og:description" content="Desarrollador Web Full Stack en formación y experiencia en proyectos reales.">
+  <meta property="og:description" content="Perfil profesional orientado a desarrollo web Full Stack, experiencia real y enfoque corporativo.">
   <meta property="og:type" content="website">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    :root{
-      --bg: radial-gradient(circle at top, #111, #0a0a0a);
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --card: rgba(17,17,17,0.55);
-      --border: rgba(255,255,255,0.08);
-      --title:#d1d5db;
-      --hover:#fff;
+    :root {
+      --bg: #f5f1ea;
+      --surface: rgba(255, 255, 255, 0.78);
+      --surface-solid: #ffffff;
+      --surface-alt: #f0f4f8;
+      --text: #102033;
+      --muted: #5c6b7d;
+      --border: rgba(16, 32, 51, 0.11);
+      --accent: #a36d24;
+      --accent-2: #1e5a7a;
+      --accent-3: #2f6f62;
+      --shadow: 0 18px 60px rgba(10, 20, 35, 0.08);
+      --radius: 22px;
+      --container: 1180px;
     }
 
-    body.light{
-      --bg: linear-gradient(180deg,#f5f7fb,#e9eef5);
-      --text:#111;
-      --muted:#4b5563;
-      --card: rgba(255,255,255,0.7);
-      --border: rgba(0,0,0,0.1);
-      --title:#111;
-      --hover:#000;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    *{margin:0;padding:0;box-sizing:border-box;}
-
-    body{
-      font-family:'Inter',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
-      overflow-x:hidden;
-      transition:0.4s;
+    html {
+      scroll-behavior: smooth;
     }
 
-    header{
-      padding:100px 20px 60px;
-      text-align:center;
-      position:relative;
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(163, 109, 36, 0.10), transparent 30%),
+        radial-gradient(circle at top right, rgba(30, 90, 122, 0.10), transparent 26%),
+        linear-gradient(180deg, #fbf8f3 0%, #eef3f7 100%);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
     }
 
-    /* SWITCH */
-    .switch{
-      position:absolute;
-      top:20px;
-      right:20px;
-      width:70px;
-      height:34px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 8px;
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:999px;
-      cursor:pointer;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(16, 32, 51, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 32, 51, 0.03) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity: 0.25;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(245, 241, 234, 0.78);
+      border-bottom: 1px solid rgba(16, 32, 51, 0.06);
+    }
+
+    .site-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .brand__mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), #d0a15e);
+      box-shadow: 0 10px 25px rgba(163, 109, 36, 0.25);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .brand__text {
+      display: grid;
+      gap: 2px;
+    }
+
+    .brand__name {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand__role {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .site-nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 72px 0 46px;
+    }
+
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero__main,
+    .hero__side {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.58));
+      border: 1px solid rgba(16, 32, 51, 0.08);
+      box-shadow: var(--shadow);
+      border-radius: 32px;
+      overflow: hidden;
+    }
+
+    .hero__main {
+      padding: 34px;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(30, 90, 122, 0.08);
+      color: var(--accent-2);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3.1rem, 7vw, 5.4rem);
+      line-height: 0.92;
+      margin-top: 18px;
+      letter-spacing: -0.04em;
+    }
+
+    .hero__lead {
+      margin-top: 18px;
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 58ch;
+    }
+
+    .hero__facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .fact {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(16, 32, 51, 0.08);
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .fact strong {
+      display: block;
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+
+    .fact span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 13px 18px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button--primary {
+      background: linear-gradient(135deg, var(--accent), #c78d3f);
+      color: #fff;
+      box-shadow: 0 16px 30px rgba(163, 109, 36, 0.22);
+    }
+
+    .button--secondary {
+      background: rgba(16, 32, 51, 0.05);
+      color: var(--text);
+      border: 1px solid rgba(16, 32, 51, 0.08);
+    }
+
+    .hero__side {
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .portrait {
+      position: relative;
+      min-height: 310px;
+      padding: 24px;
+      background:
+        linear-gradient(160deg, rgba(16, 32, 51, 0.96), rgba(30, 90, 122, 0.92)),
+        linear-gradient(135deg, rgba(163, 109, 36, 0.2), transparent);
+      color: #f8fbff;
+    }
+
+    .portrait::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 24px;
+      pointer-events: none;
+    }
+
+    .portrait__image {
+      width: 100%;
+      max-width: 250px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 28px;
+      border: 5px solid rgba(255, 255, 255, 0.24);
+      display: block;
+      margin-left: auto;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .portrait__badge {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       backdrop-filter: blur(10px);
+      font-weight: 700;
     }
 
-    .switch input{display:none;}
-
-    .slider{
-      position:absolute;
-      width:26px;
-      height:26px;
-      background:#fff;
-      border-radius:50%;
-      top:3px;
-      left:4px;
-      transition:0.3s;
+    .portrait__badge i {
+      color: #d9c08b;
     }
 
-    body.light .slider{
-      transform:translateX(36px);
-      background:#111;
+    .hero__meta {
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.55);
+      display: grid;
+      gap: 14px;
     }
 
-    .switch i{
-      font-size:14px;
-      z-index:2;
-      pointer-events:none;
+    .meta-list {
+      display: grid;
+      gap: 14px;
     }
 
-    .profile-img{
-      width:140px;height:140px;border-radius:50%;object-fit:cover;
-      margin-bottom:20px;border:2px solid var(--border);
-      transition:0.4s;
+    .meta-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(16, 32, 51, 0.06);
     }
 
-    .profile-img:hover{transform:scale(1.08);border-color:var(--hover);}
-
-    h1{font-size:3rem;font-weight:700;transition:0.3s;}
-    h1:hover{color:var(--hover);letter-spacing:1px;}
-
-    header p{margin-top:10px;color:var(--muted);}
-
-    section{max-width:1000px;margin:auto;padding:40px 20px;}
-
-    h2{margin-bottom:20px;color:var(--title);}
-
-    .card{
-      background:var(--card);
-      backdrop-filter:blur(12px);
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:25px;
-      margin-bottom:20px;
-      transition:0.35s;
-      opacity:0;
-      transform:translateY(40px);
+    .meta-item i {
+      color: var(--accent-2);
+      margin-top: 2px;
     }
 
-    .card.show{opacity:1;transform:translateY(0);}
-
-    /* 🔥 HOVER MEJORADO DARK/LIGHT */
-    body:not(.light) .card:hover{
-      transform:translateY(-12px) scale(1.03);
-      border-color:#ffffff55;
-      box-shadow:0 10px 30px rgba(255,255,255,0.08);
+    .meta-item strong {
+      display: block;
+      font-size: 0.98rem;
     }
 
-    body.light .card:hover{
-      transform:translateY(-10px) scale(1.02);
-      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    .meta-item span {
+      color: var(--muted);
+      font-size: 0.92rem;
     }
 
-    .skills{display:flex;flex-wrap:wrap;gap:10px;}
-
-    .skill{
-      background:rgba(0,0,0,0.2);
-      border:1px solid var(--border);
-      padding:8px 14px;
-      border-radius:999px;
-      font-size:0.85rem;
-      transition:0.3s;
+    section.block {
+      padding: 34px 0;
     }
 
-    .skill:hover{background:var(--hover);color:#000;transform:translateY(-3px);box-shadow:0 0 18px rgba(255,255,255,0.4);}
-
-    .links{margin-top:15px;display:flex;gap:10px;}
-
-    .links a{
-      width:42px;height:42px;display:flex;align-items:center;justify-content:center;
-      border-radius:10px;border:1px solid var(--border);
-      color:var(--muted);text-decoration:none;
-      transition:0.3s;position:relative;
+    .section-panel {
+      background: var(--surface);
+      border: 1px solid rgba(16, 32, 51, 0.08);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
-    .links a::after{
-      content:attr(title);
-      position:absolute;bottom:120%;left:50%;transform:translateX(-50%);
-      background:#111;color:#fff;padding:4px 8px;font-size:12px;
-      border-radius:6px;opacity:0;transition:0.3s;
+    .section-panel__header {
+      padding: 30px 30px 0;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
     }
 
-    .links a:hover::after{opacity:1;transform:translateX(-50%) translateY(-4px);}
-
-    .links a:hover{
-      background:var(--hover);
-      color:#000;
-      transform:translateY(-3px);
-      box-shadow:0 0 18px rgba(255,255,255,0.4);
+    .section-title {
+      display: grid;
+      gap: 8px;
     }
 
-    footer{
-      text-align:center;
-      padding:30px;
-      font-size:0.85rem;
-      color:var(--muted);
-      border-top:1px solid var(--border);
-    }
-  /* FIX HOVER LIGHT MODE (skills + icons) */
-    body.light .skill:hover{
-      background: rgba(0,0,0,0.08);
-      color: #111;
-      transform: translateY(-3px);
-      box-shadow: 0 0 18px rgba(0,0,0,0.15);
+    .section-title h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.1rem, 4vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
     }
 
-    body.light .links a:hover{
-      background: rgba(0,0,0,0.08);
-      color: #111;
-      transform: translateY(-3px);
-      box-shadow: 0 0 18px rgba(0,0,0,0.15);
+    .section-title p {
+      color: var(--muted);
+      max-width: 62ch;
     }
 
-</style>
+    .section-panel__body {
+      padding: 26px 30px 30px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(16, 32, 51, 0.08);
+      border-radius: 24px;
+      padding: 22px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(30, 90, 122, 0.18);
+      box-shadow: 0 18px 34px rgba(10, 20, 35, 0.08);
+    }
+
+    .about-card {
+      display: grid;
+      gap: 12px;
+    }
+
+    .about-card p,
+    .experience-card p,
+    .contact-card p {
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .experience-card h3,
+    .project-card h3,
+    .skills-card h3,
+    .contact-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .experience-card .role {
+      color: var(--accent-2);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .bullets {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .bullets li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.68em;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .skills-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .skill-group {
+      display: grid;
+      gap: 12px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(16, 32, 51, 0.09);
+      background: linear-gradient(180deg, #ffffff, #f7fafc);
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .skill:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, rgba(30, 90, 122, 0.12), rgba(163, 109, 36, 0.12));
+      color: var(--text);
+    }
+
+    .section-accent {
+      background:
+        linear-gradient(135deg, rgba(30, 90, 122, 0.08), rgba(163, 109, 36, 0.07)),
+        rgba(255, 255, 255, 0.64);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      min-height: 100%;
+      display: grid;
+      gap: 12px;
+    }
+
+    .project-card__top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .project-chip {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(30, 90, 122, 0.1);
+      color: var(--accent-2);
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .project-card p {
+      color: var(--muted);
+    }
+
+    .project-links,
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .contact-links--stacked {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .contact-copy {
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-copy .button {
+      width: fit-content;
+    }
+
+    .icon-link {
+      width: 46px;
+      height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      border: 1px solid rgba(16, 32, 51, 0.1);
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--muted);
+      text-decoration: none;
+      transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .icon-link:hover {
+      transform: translateY(-2px);
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      box-shadow: 0 14px 26px rgba(16, 32, 51, 0.16);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.95fr;
+      gap: 18px;
+    }
+
+    .contact-highlight {
+      background:
+        linear-gradient(135deg, rgba(16, 32, 51, 0.98), rgba(30, 90, 122, 0.94)),
+        #102033;
+      color: #f7fbff;
+    }
+
+    .contact-highlight p {
+      color: rgba(247, 251, 255, 0.8);
+    }
+
+    .contact-highlight .icon-link {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.14);
+      color: #f7fbff;
+    }
+
+    .contact-highlight .icon-link:hover {
+      background: linear-gradient(135deg, #d7a461, #b87a2b);
+      color: #fff;
+    }
+
+    .footer {
+      padding: 26px 0 36px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero__grid,
+      .about-grid,
+      .projects-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero__facts {
+        grid-template-columns: 1fr;
+      }
+
+      .site-header__inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .site-nav {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--container), calc(100% - 26px));
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero__main,
+      .hero__side,
+      .section-panel__header,
+      .section-panel__body {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .hero__main {
+        padding-top: 24px;
+        padding-bottom: 24px;
+      }
+
+      .portrait {
+        min-height: 270px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<header>
-
-  <!-- SWITCH -->
-  <label class="switch">
-    <i class="fa-solid fa-moon"></i>
-    <input type="checkbox" id="themeToggle">
-    <span class="slider"></span>
-    <i class="fa-solid fa-sun"></i>
-  </label>
-
-  <img src="imagen linkedin.png" class="profile-img" alt="Foto de perfil de José Burguillos" loading="lazy">
-  <h1>José Burguillos</h1>
-  <p>Desarrollador Web Full Stack</p>
-</header>
-
-<section>
-
-  <h2>Sobre mí</h2>
-  <div class="card">
-    <p>Soy desarrollador web en formación con base en ESO, Sistemas Microinformáticos y Redes (SMR) y actualmente cursando Desarrollo de Aplicaciones Web (DAW). Me estoy especializando en desarrollo full stack con tecnologías como HTML, CSS, JavaScript, Angular y Laravel. Me considero una persona constante, autodidacta y con gran interés en entender tanto el frontend como el backend. Me adapto rápido, disfruto resolviendo problemas y busco mejorar continuamente como programador, con especial interés en nuevas tecnologías e inteligencia artificial.</p>
-  </div>
-
-  <h2>Experiencia</h2>
-  <div class="card">
-    <h3>Deuser (Indra Group)</h3>
-    <p><strong>Programador Full Stack (4 meses)</strong><br>
-    Desarrollo de funcionalidades frontend y backend<br>
-    Uso de JavaScript en proyectos reales<br>
-    Diseño y mejora de interfaces web<br>
-    Trabajo en equipo con metodologías profesionales</p>
-  </div>
-
-  <div class="card">
-    <h3>Recosur</h3>
-    <p><strong>Prácticas (3 meses)</strong><br>
-    Soporte técnico a usuarios<br>
-    Mantenimiento y configuración de equipos<br>
-    Resolución de incidencias informáticas<br>
-    Aprendizaje en entorno laboral real</p>
-  </div>
-
-  <h2>Tecnologías</h2>
-
-  <div class="card">
-    <h3>Frontend</h3>
-    <div class="skills">
-      <span class="skill">JavaScript</span>
-      <span class="skill">Angular</span>
-      <span class="skill">Python</span>
-      <span class="skill">React</span>
-      <span class="skill">Bootstrap</span>
-      <span class="skill">Tailwind</span>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>Backend</h3>
-    <div class="skills">
-      <span class="skill">Java</span>
-      <span class="skill">C#</span>
-      <span class="skill">PHP</span>
-      <span class="skill">Node.js</span>
-      <span class="skill">MySQL</span>
-      <span class="skill">Laravel</span>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>DevOps / Tools</h3>
-    <div class="skills">
-      <span class="skill">Docker</span>
-      <span class="skill">GitHub</span>
-      <span class="skill">VS Code</span>
-    </div>
-  </div>
-
-  <h2>Proyectos</h2>
-  <div class="card">
-    <div class="links" style="justify-content:center;">
-      <a href="https://github.com/JoseBurguillos" target="_blank" title="GitHub">
-        <i class="fa-brands fa-github"></i>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="#inicio">
+        <span class="brand__mark">JB</span>
+        <span class="brand__text">
+          <span class="brand__name">José Burguillos</span>
+          <span class="brand__role">Desarrollador Web Full Stack</span>
+        </span>
       </a>
+
+      <nav class="site-nav" aria-label="Navegación principal">
+        <a href="#perfil">Perfil</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#tecnologias">Tecnologías</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <h2>Contacto</h2>
-  <div class="card">
-    <p>Actualmente estoy en búsqueda de nuevas oportunidades laborales como desarrollador web. Si estás interesado en mi perfil, puedes contactarme directamente por correo electrónico.</p>
-    <div class="links">
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=joseab078@gmail.com" target="_blank" title="Enviar correo">
-        <i class="fa-solid fa-envelope"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/jos%C3%A9-burguillos-88834932a/" target="_blank" title="LinkedIn">
-        <i class="fa-brands fa-linkedin-in"></i>
-      </a>
-      <a href="https://github.com/JoseBurguillos" target="_blank" title="GitHub">
-        <i class="fa-brands fa-github"></i>
-      </a>
-    </div>
-  </div>
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__main reveal">
+          <span class="eyebrow"><i class="fa-solid fa-circle-check"></i> Perfil orientado a empresa</span>
+          <h1>Desarrollo web con mentalidad técnica, rigor y visión de negocio.</h1>
+          <p class="hero__lead">
+            Soy José Burguillos, desarrollador web Full Stack con experiencia en proyectos reales,
+            formación técnica sólida y una actitud muy enfocada a la calidad, la colaboración y la mejora continua.
+          </p>
 
-</section>
+          <div class="hero__facts" aria-label="Resumen profesional">
+            <div class="fact">
+              <strong>Full Stack</strong>
+              <span>Frontend, backend y despliegue de soluciones web</span>
+            </div>
+            <div class="fact">
+              <strong>Experiencia real</strong>
+              <span>Trabajo en empresa, soporte técnico y entornos profesionales</span>
+            </div>
+            <div class="fact">
+              <strong>Enfoque empresarial</strong>
+              <span>Orden, comunicación y adaptación a equipos grandes</span>
+            </div>
+          </div>
 
-<footer>
-  © 2026 José Burguillos
-</footer>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#contacto"><i class="fa-solid fa-envelope"></i> Contactar</a>
+            <a class="button button--secondary" href="https://github.com/JoseBurguillos" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a class="button button--secondary" href="https://www.linkedin.com/in/jos%C3%A9-burguillos-88834932a/" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+          </div>
+        </div>
 
-<script>
-  const cards = document.querySelectorAll('.card');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('show');
+        <aside class="hero__side reveal">
+          <div class="portrait">
+            <img src="imagen linkedin.png" class="portrait__image" alt="Foto de perfil de José Burguillos" loading="lazy">
+            <div class="portrait__badge">
+              <i class="fa-solid fa-suitcase"></i>
+              Disponible para nuevas oportunidades
+            </div>
+          </div>
+          <div class="hero__meta">
+            <div class="meta-list">
+              <div class="meta-item">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <div>
+                  <strong>Formación</strong>
+                  <span>ESO, SMR y actualmente DAW</span>
+                </div>
+              </div>
+              <div class="meta-item">
+                <i class="fa-solid fa-code"></i>
+                <div>
+                  <strong>Stack principal</strong>
+                  <span>JavaScript, Angular, React, PHP, Laravel, Java y Python</span>
+                </div>
+              </div>
+              <div class="meta-item">
+                <i class="fa-solid fa-chart-line"></i>
+                <div>
+                  <strong>Perfil profesional</strong>
+                  <span>Autodidacta, resolutivo y orientado a resultados</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="block" id="perfil">
+      <div class="container section-panel reveal">
+        <div class="section-panel__header">
+          <div class="section-title">
+            <span class="eyebrow"><i class="fa-solid fa-id-card"></i> Perfil</span>
+            <h2>Un candidato con base técnica y actitud profesional</h2>
+          </div>
+        </div>
+        <div class="section-panel__body">
+          <div class="about-grid">
+            <article class="card about-card">
+              <h3>Sobre mí</h3>
+              <p>
+                Soy desarrollador web en formación con base en ESO, Sistemas Microinformáticos y Redes (SMR)
+                y actualmente cursando Desarrollo de Aplicaciones Web (DAW). Me estoy especializando en desarrollo
+                full stack con tecnologías como HTML, CSS, JavaScript, Angular y Laravel.
+              </p>
+              <p>
+                Me considero una persona constante, autodidacta y con interés en entender tanto el frontend como el backend.
+                Me adapto rápido, disfruto resolviendo problemas y busco mejorar continuamente como programador,
+                con especial interés en nuevas tecnologías e inteligencia artificial.
+              </p>
+            </article>
+
+            <article class="card about-card section-accent">
+              <h3>Lo que aporto</h3>
+              <ul class="bullets">
+                <li>Capacidad para integrarme en equipos de trabajo con rapidez.</li>
+                <li>Comunicación clara y actitud orientada a la mejora continua.</li>
+                <li>Interés por desarrollar software limpio, mantenible y útil.</li>
+                <li>Versatilidad entre soporte, frontend y backend.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="experiencia">
+      <div class="container section-panel reveal">
+        <div class="section-panel__header">
+          <div class="section-title">
+            <span class="eyebrow"><i class="fa-solid fa-briefcase"></i> Experiencia</span>
+            <h2>Experiencia aplicada en entornos reales</h2>
+          </div>
+        </div>
+        <div class="section-panel__body">
+          <div class="timeline">
+            <article class="card experience-card">
+              <h3>Deuser (Indra Group)</h3>
+              <div class="role">Programador Full Stack · 4 meses</div>
+              <ul class="bullets">
+                <li>Desarrollo de funcionalidades frontend y backend.</li>
+                <li>Uso de JavaScript en proyectos reales.</li>
+                <li>Diseño y mejora de interfaces web.</li>
+                <li>Trabajo en equipo con metodologías profesionales.</li>
+              </ul>
+            </article>
+
+            <article class="card experience-card">
+              <h3>Recosur</h3>
+              <div class="role">Prácticas · 3 meses</div>
+              <ul class="bullets">
+                <li>Soporte técnico a usuarios.</li>
+                <li>Mantenimiento y configuración de equipos.</li>
+                <li>Resolución de incidencias informáticas.</li>
+                <li>Aprendizaje en entorno laboral real.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="tecnologias">
+      <div class="container section-panel reveal">
+        <div class="section-panel__header">
+          <div class="section-title">
+            <span class="eyebrow"><i class="fa-solid fa-layer-group"></i> Tecnologías</span>
+            <h2>Stack técnico equilibrado y versátil</h2>
+          </div>
+        </div>
+        <div class="section-panel__body">
+          <div class="skills-grid">
+            <article class="card skills-card">
+              <h3>Frontend</h3>
+              <div class="skills">
+                <span class="skill">JavaScript</span>
+                <span class="skill">Angular</span>
+                <span class="skill">React</span>
+                <span class="skill">Bootstrap</span>
+                <span class="skill">Tailwind</span>
+              </div>
+            </article>
+
+            <article class="card skills-card section-accent">
+              <h3>Backend</h3>
+              <div class="skills">
+                <span class="skill">Java</span>
+                <span class="skill">C#</span>
+                <span class="skill">PHP</span>
+                <span class="skill">Node.js</span>
+                <span class="skill">MySQL</span>
+                <span class="skill">Laravel</span>
+                <span class="skill">Python</span>
+              </div>
+            </article>
+
+            <article class="card skills-card">
+              <h3>DevOps / Tools</h3>
+              <div class="skills">
+                <span class="skill">Docker</span>
+                <span class="skill">GitHub</span>
+                <span class="skill">VS Code</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="proyectos">
+      <div class="container section-panel reveal">
+        <div class="section-panel__header">
+          <div class="section-title">
+            <span class="eyebrow"><i class="fa-solid fa-diagram-project"></i> Proyectos</span>
+            <h2>Presencia profesional y acceso directo a mi trabajo</h2>
+          </div>
+        </div>
+        <div class="section-panel__body">
+          <div class="projects-grid">
+            <article class="card project-card">
+              <div class="project-card__top">
+                <h3>Repositorio principal</h3>
+                <span class="project-chip">GitHub</span>
+              </div>
+              <p>
+                Acceso directo a mi perfil de GitHub, donde podrás revisar el tipo de código, estructura y proyectos
+                en los que estoy trabajando.
+              </p>
+              <div class="project-links">
+                <a class="icon-link" href="https://github.com/JoseBurguillos" target="_blank" rel="noreferrer" aria-label="GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </article>
+
+            <article class="card project-card section-accent">
+              <div class="project-card__top">
+                <h3>Perfil profesional</h3>
+                <span class="project-chip">LinkedIn</span>
+              </div>
+              <p>
+                También puedes revisar mi trayectoria, formación y experiencia laboral en LinkedIn para tener una visión
+                más completa de mi perfil.
+              </p>
+              <div class="project-links">
+                <a class="icon-link" href="https://www.linkedin.com/in/jos%C3%A9-burguillos-88834932a/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="contacto">
+      <div class="container section-panel reveal">
+        <div class="section-panel__header">
+          <div class="section-title">
+            <span class="eyebrow"><i class="fa-solid fa-paper-plane"></i> Contacto</span>
+            <h2>Preparado para incorporarme a un equipo exigente</h2>
+          </div>
+        </div>
+        <div class="section-panel__body">
+          <div class="contact-grid">
+            <article class="card contact-card contact-highlight">
+              <div class="contact-copy">
+                <h3>Hablemos</h3>
+                <p>
+                  La forma más rápida de contactarme es por correo. Si preferís, podéis pedirme una reunión de 30 minutos
+                  por Teams o Meet y os respondo con disponibilidad.
+                </p>
+                <a class="button button--primary" href="mailto:joseab078@gmail.com?subject=Contacto%20desde%20tu%20portfolio&body=Hola%20Jos%C3%A9,%0A%0AVengo%20de%20tu%20portfolio%20y%20me%20gustar%C3%ADa%20hablar%20contigo.%0A%0A%20-%20Nombre:%0A%20-%20Empresa:%0A%20-%20Motivo:%0A%0ASi%20te%20encaja,%20podemos%20agendar%20una%20reuni%C3%B3n%20de%2030%20minutos%20por%20Teams%20o%20Meet.%0A%0AGracias." aria-label="Enviar correo a José Burguillos">
+                  <i class="fa-solid fa-envelope"></i> Escribir por correo
+                </a>
+                <a class="button button--secondary" href="mailto:joseab078@gmail.com?subject=Solicitud%20de%20reuni%C3%B3n%20de%2030%20minutos&body=Hola%20Jos%C3%A9,%0A%0AQuisiera%20solicitar%20una%20reuni%C3%B3n%20de%2030%20minutos%20por%20Teams%20o%20Meet.%0A%0AMe%20viene%20bien%20coordinarla%20en%20estos%20horarios:%0A%0A-%0A-%0A-%0A%0AGracias." aria-label="Solicitar reunión de 30 minutos por Teams o Meet">
+                  <i class="fa-solid fa-calendar-days"></i> Solicitar reunión de 30 min
+                </a>
+              </div>
+              <div class="contact-links contact-links--stacked">
+                <a class="icon-link" href="mailto:joseab078@gmail.com" aria-label="Abrir correo">
+                  <i class="fa-solid fa-at"></i>
+                </a>
+                <a class="icon-link" href="https://www.linkedin.com/in/jos%C3%A9-burguillos-88834932a/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a class="icon-link" href="https://github.com/JoseBurguillos" target="_blank" rel="noreferrer" aria-label="GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </article>
+
+            <article class="card contact-card">
+              <h3>Disponibilidad</h3>
+              <p>
+                Estoy abierto a posiciones de desarrollo web, prácticas avanzadas o incorporaciones junior donde pueda
+                seguir creciendo y aportar desde el primer día.
+              </p>
+              <ul class="bullets">
+                <li>Contacto principal: <a href="mailto:joseab078@gmail.com"><strong>joseab078@gmail.com</strong></a></li>
+                <li>Reunión de 30 minutos disponible por Teams o Meet bajo petición.</li>
+                <li>LinkedIn y GitHub disponibles para revisión inmediata.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 2026 José Burguillos
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll(".reveal, .card").forEach((element) => {
+      observer.observe(element);
     });
-  }, { threshold: 0.15 });
-  cards.forEach(card => observer.observe(card));
-
-  const toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('change', () => {
-    document.body.classList.toggle('light');
-  });
-</script>
-
+  </script>
 </body>
 </html>
