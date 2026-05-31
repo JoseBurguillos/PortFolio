@@ -1050,6 +1050,11 @@
       observer.observe(element);
     });
 
+    const emailLink = document.querySelector('.contact-copy .button--primary[href^="mailto:"]');
+    if (emailLink) {
+      emailLink.href = "mailto:joseab078@gmail.com";
+    }
+
     const bookingButton = document.querySelector('.button--secondary[href^="mailto:"]');
     if (bookingButton) {
       bookingButton.classList.add("button--calendar");
