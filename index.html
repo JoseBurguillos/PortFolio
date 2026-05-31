@@ -1007,6 +1007,10 @@
   </footer>
 
   <script>
+    const bookingUrl = "bookingUrl";
+    const fallbackEmail = "mailto:joseab078@gmail.com";
+    const hasBookingUrl = bookingUrl && !bookingUrl.includes("REEMPLAZA_AQUI_TU_LINK_DE_GOOGLE_CALENDAR");
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -1018,6 +1022,34 @@
     document.querySelectorAll(".reveal, .card").forEach((element) => {
       observer.observe(element);
     });
+
+    const bookingButton = document.querySelector('.button--secondary[href^="mailto:"]');
+    if (bookingButton) {
+      bookingButton.href = hasBookingUrl ? bookingUrl : fallbackEmail;
+      bookingButton.target = hasBookingUrl ? "_blank" : "_self";
+      bookingButton.rel = hasBookingUrl ? "noreferrer" : "";
+      bookingButton.setAttribute(
+        "aria-label",
+        hasBookingUrl
+          ? "Reservar reunion en Google Calendar"
+          : "Solicitar reunion por correo"
+      );
+      bookingButton.innerHTML = hasBookingUrl
+        ? '<i class="fa-solid fa-calendar-check"></i> Reservar con Google Calendar'
+        : '<i class="fa-solid fa-calendar-days"></i> Solicitar reuni\u00f3n de 30 min';
+    }
+
+    const bookingCopy = document.querySelector(".contact-copy p");
+    if (bookingCopy && hasBookingUrl) {
+      bookingCopy.textContent =
+        "La forma mas rapida de contactarme es por correo. Si preferis, podeis reservar una reunion de 30 minutos desde Google Calendar y el enlace de Google Meet se generara automaticamente al confirmar la cita.";
+    }
+
+    const availabilityItem = document.querySelector(".contact-card .bullets li:nth-child(2)");
+    if (availabilityItem && hasBookingUrl) {
+      availabilityItem.textContent =
+        "Reunion de 30 minutos disponible por Google Calendar con Meet automatico.";
+    }
   </script>
 </body>
 </html>
