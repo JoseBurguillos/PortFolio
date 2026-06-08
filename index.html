@@ -1,1088 +1,1982 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jos&eacute; Burguillos | Desarrollador Web Full Stack</title>
+  <meta name="description" content="Portfolio interactivo de Jos&eacute; Burguillos, desarrollador web Full Stack, inspirado en un escritorio retro con ventanas y archivos profesionales.">
+  <meta name="author" content="Jos&eacute; Burguillos">
 
-  <title>José Burguillos | Desarrollador Web Full Stack</title>
-  <meta name="description" content="Portfolio de José Burguillos, desarrollador web Full Stack con experiencia en proyectos reales y tecnologías como HTML, CSS, JavaScript, Angular, React, PHP, Laravel y Docker.">
-  <meta name="author" content="José Burguillos">
-
-  <meta property="og:title" content="José Burguillos | Portfolio">
+  <meta property="og:title" content="Jos&eacute; Burguillos | Portfolio">
   <meta property="og:description" content="Perfil profesional orientado a desarrollo web Full Stack, experiencia real y enfoque corporativo.">
   <meta property="og:type" content="website">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <style>
     :root {
-      --bg: #f5f1ea;
-      --surface: rgba(255, 255, 255, 0.78);
-      --surface-solid: #ffffff;
-      --surface-alt: #f0f4f8;
-      --text: #102033;
-      --muted: #5c6b7d;
-      --border: rgba(16, 32, 51, 0.11);
-      --accent: #a36d24;
-      --accent-2: #1e5a7a;
-      --accent-3: #2f6f62;
-      --shadow: 0 18px 60px rgba(10, 20, 35, 0.08);
-      --radius: 22px;
-      --container: 1180px;
+      --desktop-blue: #0b61c9;
+      --desktop-blue-dark: #003f9c;
+      --desktop-blue-soft: #2f8df5;
+      --taskbar-blue: #1f68db;
+      --taskbar-dark: #0643aa;
+      --start-green: #2f8a26;
+      --start-green-dark: #16600f;
+      --window-border: #0757bf;
+      --window-shadow: rgba(0, 18, 72, 0.38);
+      --chrome: #ece9d8;
+      --chrome-dark: #c7c2ad;
+      --paper: #fffdf4;
+      --ink: #10151f;
+      --muted: #4f5868;
+      --line: #b5ad92;
+      --focus: #ffdd57;
+      --danger: #d24d18;
+      --radius: 7px;
+      --taskbar-height: 48px;
+      --font-ui: Tahoma, Verdana, Segoe UI, Arial, sans-serif;
+      --font-doc: "Courier New", Consolas, monospace;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     html {
-      scroll-behavior: smooth;
+      height: 100%;
     }
 
     body {
-      font-family: "Inter", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(163, 109, 36, 0.10), transparent 30%),
-        radial-gradient(circle at top right, rgba(30, 90, 122, 0.10), transparent 26%),
-        linear-gradient(180deg, #fbf8f3 0%, #eef3f7 100%);
-      color: var(--text);
-      line-height: 1.65;
-      overflow-x: hidden;
+      min-height: 100%;
+      margin: 0;
+      font-family: var(--font-ui);
+      color: var(--ink);
+      background: #0067c7;
+      overflow: hidden;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(16, 32, 51, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(16, 32, 51, 0.03) 1px, transparent 1px);
-      background-size: 42px 42px;
-      opacity: 0.25;
-      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent);
+    button,
+    a {
+      font: inherit;
     }
 
     a {
-      color: inherit;
-    }
-
-    .container {
-      width: min(var(--container), calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: rgba(245, 241, 234, 0.78);
-      border-bottom: 1px solid rgba(16, 32, 51, 0.06);
-    }
-
-    .site-header__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 16px 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-    }
-
-    .brand__mark {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), #d0a15e);
-      box-shadow: 0 10px 25px rgba(163, 109, 36, 0.25);
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-    }
-
-    .brand__text {
-      display: grid;
-      gap: 2px;
-    }
-
-    .brand__name {
+      color: #0646a4;
       font-weight: 700;
-      letter-spacing: -0.02em;
     }
 
-    .brand__role {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .site-nav {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .site-nav a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
-
-    .site-nav a:hover {
-      color: var(--text);
-    }
-
-    .hero {
-      padding: 72px 0 46px;
-    }
-
-    .hero__grid {
-      display: grid;
-      grid-template-columns: 1.35fr 0.85fr;
-      gap: 28px;
-      align-items: stretch;
-    }
-
-    .hero__main,
-    .hero__side {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.58));
-      border: 1px solid rgba(16, 32, 51, 0.08);
-      box-shadow: var(--shadow);
-      border-radius: 32px;
-      overflow: hidden;
-    }
-
-    .hero__main {
-      padding: 34px;
-      position: relative;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(30, 90, 122, 0.08);
-      color: var(--accent-2);
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .hero h1 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3.1rem, 7vw, 5.4rem);
-      line-height: 0.92;
-      margin-top: 18px;
-      letter-spacing: -0.04em;
-    }
-
-    .hero__lead {
-      margin-top: 18px;
-      font-size: 1.08rem;
-      color: var(--muted);
-      max-width: 58ch;
-    }
-
-    .hero__facts {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .fact {
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(16, 32, 51, 0.08);
-      border-radius: 20px;
-      padding: 16px;
-    }
-
-    .fact strong {
-      display: block;
-      font-size: 1.25rem;
-      color: var(--text);
-    }
-
-    .fact span {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .hero__actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      border-radius: 999px;
-      padding: 13px 18px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .button--primary {
-      background: linear-gradient(135deg, var(--accent), #c78d3f);
+    .skip-link {
+      position: fixed;
+      left: 12px;
+      top: 12px;
+      z-index: 5000;
+      transform: translateY(-150%);
+      border: 2px solid var(--focus);
+      border-radius: 4px;
+      background: #111827;
       color: #fff;
-      box-shadow: 0 16px 30px rgba(163, 109, 36, 0.22);
+      padding: 10px 14px;
     }
 
-    .button--secondary {
-      background: rgba(16, 32, 51, 0.05);
-      color: var(--text);
-      border: 1px solid rgba(16, 32, 51, 0.08);
+    .skip-link:focus {
+      transform: translateY(0);
     }
 
-    .button--calendar {
-      background:
-        linear-gradient(135deg, rgba(30, 90, 122, 0.98), rgba(47, 111, 98, 0.98));
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      box-shadow: 0 18px 36px rgba(30, 90, 122, 0.24);
+    .desktop-shell {
+      min-height: 100svh;
       position: relative;
       overflow: hidden;
-    }
-
-    .button--calendar::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.18) 45%, transparent 70%);
-      transform: translateX(-120%);
-      transition: transform 0.45s ease;
-    }
-
-    .button--calendar:hover {
-      box-shadow: 0 22px 40px rgba(30, 90, 122, 0.28);
-    }
-
-    .button--calendar:hover::after {
-      transform: translateX(120%);
-    }
-
-    .hero__side {
-      display: grid;
-      grid-template-rows: auto 1fr;
-    }
-
-    .portrait {
-      position: relative;
-      min-height: 310px;
-      padding: 24px;
       background:
-        linear-gradient(160deg, rgba(16, 32, 51, 0.96), rgba(30, 90, 122, 0.92)),
-        linear-gradient(135deg, rgba(163, 109, 36, 0.2), transparent);
-      color: #f8fbff;
+        linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0 1px, transparent 1px),
+        linear-gradient(180deg, #0e76d8 0%, #2ba5ff 52%, #60bd4b 53%, #2f8b30 82%, #1c6a28 100%);
+      isolation: isolate;
     }
 
-    .portrait::after {
+    .desktop-shell::before,
+    .desktop-shell::after {
       content: "";
       position: absolute;
-      inset: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 24px;
+      z-index: -1;
       pointer-events: none;
     }
 
-    .portrait__image {
-      width: 100%;
-      max-width: 250px;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 28px;
-      border: 5px solid rgba(255, 255, 255, 0.24);
-      display: block;
-      margin-left: auto;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+    .desktop-shell::before {
+      left: -8vw;
+      right: -10vw;
+      bottom: var(--taskbar-height);
+      height: 32vh;
+      background:
+        linear-gradient(162deg, transparent 0 24%, rgba(255, 255, 255, 0.1) 25% 26%, transparent 27%),
+        linear-gradient(12deg, #70c34e 0%, #2e932d 42%, #187321 100%);
+      clip-path: polygon(0 40%, 22% 18%, 45% 36%, 68% 12%, 100% 34%, 100% 100%, 0 100%);
+      opacity: 0.95;
     }
 
-    .portrait__badge {
-      position: absolute;
-      left: 24px;
-      bottom: 24px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      backdrop-filter: blur(10px);
+    .desktop-shell::after {
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 18% 16%, rgba(255, 255, 255, 0.8) 0 4%, rgba(255, 255, 255, 0.35) 5% 8%, transparent 9%),
+        radial-gradient(ellipse at 76% 18%, rgba(255, 255, 255, 0.68) 0 5%, rgba(255, 255, 255, 0.28) 6% 10%, transparent 11%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent 18% 82%, rgba(0, 47, 119, 0.15));
+      opacity: 0.58;
+    }
+
+    .desktop {
+      position: relative;
+      min-height: calc(100svh - var(--taskbar-height));
+      padding: 18px 24px 76px;
+    }
+
+    .desktop-icons {
+      width: min(188px, 28vw);
+      display: grid;
+      gap: 16px;
+      align-content: start;
+      position: relative;
+      z-index: 4;
+    }
+
+    .desktop-icon {
+      width: 122px;
+      min-height: 96px;
+      display: grid;
+      justify-items: center;
+      gap: 7px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      background: transparent;
+      color: #fff;
+      padding: 7px 6px;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.78);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .desktop-icon:hover,
+    .desktop-icon.is-selected,
+    .desktop-icon:focus-visible {
+      background: rgba(15, 82, 186, 0.44);
+      border-color: rgba(255, 255, 255, 0.5);
+      outline: none;
+    }
+
+    .desktop-icon:focus-visible,
+    .taskbar button:focus-visible,
+    .window button:focus-visible,
+    .start-menu a:focus-visible,
+    .start-menu button:focus-visible,
+    .quick-link:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .desktop-icon__label {
+      max-width: 100%;
+      font-size: 0.88rem;
       font-weight: 700;
+      line-height: 1.18;
+      overflow-wrap: normal;
+      word-break: normal;
+      hyphens: none;
     }
 
-    .portrait__badge i {
-      color: #d9c08b;
-    }
-
-    .hero__meta {
-      padding: 24px;
-      background: rgba(255, 255, 255, 0.55);
-      display: grid;
-      gap: 14px;
-    }
-
-    .meta-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .meta-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.76);
-      border: 1px solid rgba(16, 32, 51, 0.06);
-    }
-
-    .meta-item i {
-      color: var(--accent-2);
-      margin-top: 2px;
-    }
-
-    .meta-item strong {
-      display: block;
-      font-size: 0.98rem;
-    }
-
-    .meta-item span {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    section.block {
-      padding: 34px 0;
-    }
-
-    .section-panel {
-      background: var(--surface);
-      border: 1px solid rgba(16, 32, 51, 0.08);
-      border-radius: 30px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .section-panel__header {
-      padding: 30px 30px 0;
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .section-title {
-      display: grid;
-      gap: 8px;
-    }
-
-    .section-title h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.1rem, 4vw, 3rem);
-      line-height: 1;
-      letter-spacing: -0.03em;
-    }
-
-    .section-title p {
-      color: var(--muted);
-      max-width: 62ch;
-    }
-
-    .section-panel__body {
-      padding: 26px 30px 30px;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 22px;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(16, 32, 51, 0.08);
-      border-radius: 24px;
-      padding: 22px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    .desktop-icon[data-tooltip]::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: calc(100% + 8px);
+      top: 18px;
+      width: max-content;
+      max-width: 230px;
+      padding: 6px 8px;
+      border: 1px solid #786f48;
+      border-radius: 3px;
+      background: #fff8c6;
+      color: #181b20;
+      font-size: 0.75rem;
+      font-weight: 400;
+      text-align: left;
+      text-shadow: none;
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.18);
       opacity: 0;
-      transform: translateY(18px);
+      transform: translateY(3px);
+      pointer-events: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
     }
 
-    .card.show {
+    .desktop-icon:hover::after,
+    .desktop-icon:focus-visible::after {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(30, 90, 122, 0.18);
-      box-shadow: 0 18px 34px rgba(10, 20, 35, 0.08);
+    .glyph {
+      width: 56px;
+      height: 50px;
+      position: relative;
+      filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.35));
     }
 
-    .about-card {
+    .glyph--folder::before,
+    .glyph--folder::after {
+      content: "";
+      position: absolute;
+      border: 2px solid rgba(80, 54, 0, 0.65);
+    }
+
+    .glyph--folder::before {
+      left: 5px;
+      top: 6px;
+      width: 25px;
+      height: 12px;
+      border-bottom: 0;
+      border-radius: 5px 5px 0 0;
+      background: var(--folder-tab, #ffe27a);
+    }
+
+    .glyph--folder::after {
+      left: 3px;
+      right: 2px;
+      bottom: 3px;
+      height: 36px;
+      border-radius: 5px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.56), transparent 42%),
+        linear-gradient(180deg, var(--folder-light, #ffd95a), var(--folder-main, #e59d13));
+    }
+
+    .glyph--folder .glyph__mark {
+      position: absolute;
+      z-index: 2;
+      left: 15px;
+      top: 21px;
+      width: 25px;
+      height: 18px;
+      border: 2px solid rgba(71, 47, 0, 0.5);
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.56);
+    }
+
+    .glyph--doc {
+      width: 45px;
+      height: 54px;
+      border: 2px solid #45607f;
+      border-radius: 2px;
+      background:
+        linear-gradient(135deg, transparent 0 14%, #c8e4ff 15% 25%, transparent 26%),
+        repeating-linear-gradient(180deg, transparent 0 8px, rgba(49, 79, 109, 0.24) 8px 10px),
+        #f8fbff;
+    }
+
+    .glyph--doc::after {
+      content: "";
+      position: absolute;
+      right: -2px;
+      top: -2px;
+      border-top: 13px solid #d9edff;
+      border-left: 13px solid transparent;
+      width: 0;
+      height: 0;
+    }
+
+    .glyph--id {
+      width: 54px;
+      height: 42px;
+      border: 2px solid #35516f;
+      border-radius: 5px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.18)),
+        #dceeff;
+    }
+
+    .glyph--id::before {
+      content: "JB";
+      position: absolute;
+      left: 7px;
+      top: 7px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
       display: grid;
+      place-items: center;
+      background: #1e79d5;
+      color: #fff;
+      font-size: 0.66rem;
+      font-weight: 800;
+    }
+
+    .glyph--id::after {
+      content: "";
+      position: absolute;
+      right: 7px;
+      top: 11px;
+      width: 15px;
+      height: 3px;
+      background: #54718f;
+      box-shadow: 0 8px 0 #54718f, -7px 16px 0 #7f97ad;
+    }
+
+    .glyph--tools {
+      width: 52px;
+      height: 50px;
+      border-radius: 9px;
+      border: 2px solid #61426e;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent 38%),
+        linear-gradient(180deg, #bd8eff, #6f38bf);
+    }
+
+    .glyph--tools::before {
+      content: "";
+      position: absolute;
+      left: 17px;
+      top: 13px;
+      width: 16px;
+      height: 16px;
+      border: 5px solid rgba(255, 255, 255, 0.86);
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(55, 31, 92, 0.55);
+    }
+
+    .glyph--tools::after {
+      content: "";
+      position: absolute;
+      left: 24px;
+      top: 4px;
+      width: 4px;
+      height: 39px;
+      border-radius: 2px;
+      background: #fff;
+      transform: rotate(45deg);
+      box-shadow: 0 0 0 1px rgba(55, 31, 92, 0.38);
+    }
+
+    .glyph--contact {
+      width: 54px;
+      height: 43px;
+      border: 2px solid #3e5d7b;
+      border-radius: 4px;
+      background:
+        linear-gradient(30deg, transparent 49%, rgba(47, 86, 127, 0.65) 50% 53%, transparent 54%),
+        linear-gradient(150deg, transparent 49%, rgba(47, 86, 127, 0.65) 50% 53%, transparent 54%),
+        linear-gradient(180deg, #fbfdff, #cbe0f3);
+    }
+
+    .glyph--contact::after {
+      content: "@";
+      position: absolute;
+      right: 5px;
+      bottom: 2px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #0e64ce;
+      color: #fff;
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .window {
+      position: absolute;
+      left: var(--x, 240px);
+      top: var(--y, 58px);
+      width: min(var(--w, 720px), calc(100vw - 270px));
+      max-height: min(var(--h, 640px), calc(100svh - 92px));
+      display: flex;
+      flex-direction: column;
+      border: 2px solid var(--window-border);
+      border-radius: var(--radius) var(--radius) 5px 5px;
+      background: var(--chrome);
+      box-shadow: 6px 10px 26px var(--window-shadow);
+      overflow: hidden;
+      z-index: 20;
+    }
+
+    .window[hidden] {
+      display: none;
+    }
+
+    .window.is-maximized {
+      left: 12px !important;
+      top: 12px !important;
+      width: calc(100vw - 24px) !important;
+      max-height: calc(100svh - var(--taskbar-height) - 24px);
+      height: calc(100svh - var(--taskbar-height) - 24px);
+    }
+
+    .window__titlebar {
+      min-height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 4px 5px 4px 9px;
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.35), transparent 42%),
+        linear-gradient(90deg, #003f9c, #0f72e5 62%, #41a5ff);
+      cursor: move;
+      user-select: none;
+    }
+
+    .window__title {
+      display: inline-flex;
+      align-items: center;
+      min-width: 0;
+      gap: 8px;
+      font-weight: 800;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    }
+
+    .title-icon {
+      width: 18px;
+      height: 21px;
+      display: inline-block;
+      border: 1px solid #2a5c93;
+      border-radius: 2px;
+      background:
+        repeating-linear-gradient(180deg, transparent 0 4px, rgba(25, 62, 105, 0.28) 4px 5px),
+        #f6fbff;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+      flex: 0 0 auto;
+    }
+
+    .window__controls {
+      display: flex;
+      gap: 3px;
+      cursor: default;
+    }
+
+    .window__control {
+      width: 25px;
+      height: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: 4px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.75), transparent 45%),
+        linear-gradient(180deg, #5aa6ff, #0b4fbf);
+      color: #fff;
+      font-weight: 900;
+      line-height: 1;
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.28);
+      cursor: pointer;
+    }
+
+    .window__control:hover {
+      filter: brightness(1.12);
+    }
+
+    .window__control--close {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.72), transparent 45%),
+        linear-gradient(180deg, #ff8a4b, #c7340f);
+    }
+
+    .window__menubar {
+      display: flex;
+      gap: 18px;
+      min-height: 31px;
+      align-items: center;
+      padding: 4px 12px;
+      border-bottom: 1px solid var(--chrome-dark);
+      background: linear-gradient(180deg, #f8f6ed, #e6e1cf);
+      color: #101820;
+      font-size: 0.86rem;
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+
+    .window__body {
+      min-height: 0;
+      overflow: auto;
+      padding: 12px;
+      background: #d9d5c6;
+      scrollbar-color: #a9a18b #ede7d4;
+    }
+
+    .window__body--explorer {
+      display: grid;
+      grid-template-columns: 174px minmax(0, 1fr);
+      gap: 8px;
+    }
+
+    .window__status {
+      min-height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 4px 9px;
+      border-top: 1px solid #b6b09d;
+      background: linear-gradient(180deg, #efead7, #d9d3bd);
+      color: #30333a;
+      font-size: 0.78rem;
+    }
+
+    .txt-doc {
+      min-height: 100%;
+      border: 1px solid #8d8673;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.028) 0 1px, transparent 1px),
+        var(--paper);
+      background-size: 32px 100%;
+      padding: clamp(18px, 3vw, 34px);
+      font-family: var(--font-doc);
+      color: #151922;
+      line-height: 1.55;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    }
+
+    .txt-doc h1,
+    .txt-doc h2,
+    .txt-doc h3,
+    .txt-doc p {
+      margin: 0;
+    }
+
+    .txt-doc h1 {
+      font-size: clamp(1.35rem, 3vw, 1.85rem);
+      letter-spacing: 0;
+      line-height: 1.15;
+    }
+
+    .txt-doc h2 {
+      margin-top: 22px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #8f8878;
+      color: #003f9c;
+      font-size: 1rem;
+    }
+
+    .txt-doc h3 {
+      margin-top: 16px;
+      color: #123f86;
+      font-size: 0.96rem;
+    }
+
+    .txt-doc p,
+    .txt-doc li,
+    .txt-doc dd,
+    .txt-doc dt {
+      font-size: clamp(0.92rem, 1.25vw, 1.02rem);
+    }
+
+    .txt-doc p {
+      margin-top: 12px;
+    }
+
+    .txt-doc ul {
+      margin: 10px 0 0;
+      padding-left: 0;
+      list-style: none;
+      display: grid;
+      gap: 7px;
+    }
+
+    .txt-doc li::before {
+      content: "- ";
+    }
+
+    .txt-doc dl {
+      display: grid;
+      gap: 10px;
+      margin: 14px 0 0;
+    }
+
+    .txt-doc dt {
+      color: #003f9c;
+      font-weight: 700;
+    }
+
+    .txt-doc dd {
+      margin: 3px 0 0;
+      color: #1e2733;
+    }
+
+    .txt-doc .file-note {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 8px;
+      border: 1px dashed #6f6a58;
+      background: #fff8cf;
+      color: #4a3410;
+      font-weight: 700;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .quick-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      border: 1px solid #8c826a;
+      border-radius: 3px;
+      padding: 7px 10px;
+      background: linear-gradient(180deg, #fffef8, #e8e0ca);
+      color: #0b3a84;
+      font-family: var(--font-ui);
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #b6ab91;
+    }
+
+    .quick-link:hover {
+      color: #fff;
+      background: linear-gradient(180deg, #3a8dff, #064ab7);
+    }
+
+    .explorer-tree {
+      border: 1px solid #9d9682;
+      background: #f5f1df;
+      padding: 10px;
+      font-size: 0.84rem;
+      overflow: auto;
+    }
+
+    .explorer-tree strong {
+      display: block;
+      margin-bottom: 9px;
+      color: #123f86;
+    }
+
+    .tree-list {
+      display: grid;
+      gap: 7px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tree-list li {
+      padding-left: 17px;
+      position: relative;
+    }
+
+    .tree-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      width: 10px;
+      height: 9px;
+      border: 1px solid #7a5d08;
+      background: #f0bd27;
+    }
+
+    .explorer-panel {
+      border: 1px solid #9d9682;
+      background: #fffdf4;
+      padding: 14px;
+      overflow: auto;
+    }
+
+    .file-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 12px;
     }
 
-    .about-card p,
-    .experience-card p,
-    .contact-card p {
+    .file-card {
+      min-height: 132px;
+      display: grid;
+      align-content: start;
+      gap: 8px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      padding: 10px;
+      background: #fffdf4;
+      color: #141922;
+      text-align: left;
+    }
+
+    .file-card:hover,
+    .file-card:focus-within {
+      border-color: #1d67ce;
+      background: #e6f1ff;
+    }
+
+    .file-card__icon {
+      width: 35px;
+      height: 42px;
+      border: 1px solid #47698f;
+      background:
+        repeating-linear-gradient(180deg, transparent 0 6px, rgba(42, 81, 121, 0.22) 6px 7px),
+        #f8fbff;
+      position: relative;
+    }
+
+    .file-card__name {
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .file-card__text {
       color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.35;
     }
 
-    .timeline {
-      display: grid;
-      gap: 16px;
-    }
-
-    .experience-card h3,
-    .project-card h3,
-    .skills-card h3,
-    .contact-card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 6px;
-    }
-
-    .experience-card .role {
-      color: var(--accent-2);
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .bullets {
-      list-style: none;
-      display: grid;
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
       gap: 8px;
       margin-top: 12px;
     }
 
-    .bullets li {
-      position: relative;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-
-    .bullets li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.68em;
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    }
-
-    .skills-grid {
-      display: grid;
-      gap: 18px;
-    }
-
-    .skill-group {
-      display: grid;
-      gap: 12px;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill {
+    .tag {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 9px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(16, 32, 51, 0.09);
-      background: linear-gradient(180deg, #ffffff, #f7fafc);
-      color: var(--text);
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
-    }
-
-    .skill:hover {
-      transform: translateY(-2px);
-      background: linear-gradient(135deg, rgba(30, 90, 122, 0.12), rgba(163, 109, 36, 0.12));
-      color: var(--text);
-    }
-
-    .section-accent {
-      background:
-        linear-gradient(135deg, rgba(30, 90, 122, 0.08), rgba(163, 109, 36, 0.07)),
-        rgba(255, 255, 255, 0.64);
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .project-card {
-      min-height: 100%;
-      display: grid;
-      gap: 12px;
-    }
-
-    .project-card__top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    .project-chip {
-      padding: 7px 11px;
-      border-radius: 999px;
-      background: rgba(30, 90, 122, 0.1);
-      color: var(--accent-2);
-      font-size: 0.8rem;
+      min-height: 27px;
+      border: 1px solid #a69d82;
+      border-radius: 3px;
+      padding: 4px 8px;
+      background: linear-gradient(180deg, #fffdf7, #e7dec7);
+      color: #172033;
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
       font-weight: 700;
-      white-space: nowrap;
     }
 
-    .project-card p {
-      color: var(--muted);
+    .welcome-card {
+      display: grid;
+      gap: 12px;
+      border: 1px solid #8d8673;
+      background: linear-gradient(180deg, #fffef8, #ece6d3);
+      padding: 18px;
     }
 
-    .project-links,
-    .contact-links {
+    .welcome-card__top {
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #bbb39e;
+    }
+
+    .monitor-mark {
+      width: 60px;
+      height: 52px;
+      position: relative;
+      border: 2px solid #4a4f56;
+      border-radius: 4px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent 48%),
+        #7bc6ff;
+      box-shadow: inset 0 0 0 4px #d7d7cf;
+    }
+
+    .monitor-mark::before {
+      content: "JB";
+      position: absolute;
+      inset: 11px 14px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #0056bd;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .monitor-mark::after {
+      content: "";
+      position: absolute;
+      left: 22px;
+      bottom: -15px;
+      width: 17px;
+      height: 14px;
+      border-bottom: 4px solid #4a4f56;
+      background: #d7d7cf;
+    }
+
+    .welcome-card h1 {
+      margin: 0;
+      font-size: clamp(1.45rem, 3vw, 1.9rem);
+      line-height: 1.1;
+    }
+
+    .welcome-card p {
+      margin: 0;
+      color: #303947;
+      line-height: 1.5;
+    }
+
+    .status-row {
       display: flex;
       flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid #91886d;
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: #fff8d7;
+      color: #253044;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #43b231;
+      box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    .start-menu {
+      position: fixed;
+      left: 8px;
+      bottom: calc(var(--taskbar-height) + 7px);
+      z-index: 4000;
+      width: min(360px, calc(100vw - 16px));
+      border: 2px solid #1554bb;
+      border-radius: 8px 8px 4px 4px;
+      overflow: hidden;
+      background: #f8f6ed;
+      box-shadow: 7px 10px 24px rgba(0, 0, 0, 0.34);
+    }
+
+    .start-menu[hidden] {
+      display: none;
+    }
+
+    .start-menu__header {
+      display: flex;
+      align-items: center;
       gap: 12px;
-      margin-top: 6px;
+      padding: 14px;
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.24), transparent),
+        linear-gradient(90deg, #0a4eb2, #2f8df5);
     }
 
-    .contact-links--stacked {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .contact-copy {
+    .start-avatar {
+      width: 48px;
+      height: 48px;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      border-radius: 10px;
       display: grid;
-      gap: 10px;
+      place-items: center;
+      background: linear-gradient(135deg, #f7fbff, #9fd1ff);
+      color: #053f99;
+      font-weight: 900;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.22);
     }
 
-    .contact-copy .button {
-      width: fit-content;
+    .start-menu__name {
+      display: block;
+      font-weight: 900;
+      line-height: 1.15;
     }
 
-    .icon-link {
-      width: 46px;
-      height: 46px;
+    .start-menu__role {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.82rem;
+      opacity: 0.9;
+    }
+
+    .start-menu__body {
+      display: grid;
+      grid-template-columns: 1fr 0.72fr;
+      min-height: 270px;
+    }
+
+    .start-menu__column {
+      display: grid;
+      align-content: start;
+      gap: 3px;
+      padding: 10px;
+    }
+
+    .start-menu__column--side {
+      border-left: 1px solid #c9c0a8;
+      background: #e7eef9;
+    }
+
+    .start-item {
+      display: grid;
+      grid-template-columns: 31px 1fr;
+      align-items: center;
+      gap: 9px;
+      min-height: 42px;
+      border: 0;
+      border-radius: 4px;
+      background: transparent;
+      color: #10151f;
+      padding: 6px;
+      text-align: left;
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .start-item:hover {
+      background: #2e73d8;
+      color: #fff;
+    }
+
+    .start-item__glyph {
+      width: 28px;
+      height: 25px;
+      border: 1px solid #8b720e;
+      border-radius: 3px;
+      background: linear-gradient(180deg, #ffe282, #d89812);
+      box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.55);
+    }
+
+    .start-menu__footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      border-top: 1px solid #c1b99f;
+      padding: 8px 10px;
+      background: #d9d3bd;
+    }
+
+    .system-button {
+      border: 1px solid #786f5e;
+      border-radius: 3px;
+      padding: 6px 10px;
+      background: linear-gradient(180deg, #fffef9, #dbd2ba);
+      color: #111827;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #9d927b;
+    }
+
+    .system-button:hover {
+      background: linear-gradient(180deg, #fff9d9, #cfc2a3);
+    }
+
+    .taskbar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: var(--taskbar-height);
+      z-index: 3000;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 8px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.36), transparent 34%),
+        linear-gradient(180deg, var(--taskbar-blue), var(--taskbar-dark));
+      border-top: 1px solid rgba(255, 255, 255, 0.56);
+      box-shadow: 0 -2px 8px rgba(0, 27, 92, 0.4);
+    }
+
+    .start-button {
+      height: 38px;
+      min-width: 128px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 14px;
-      border: 1px solid rgba(16, 32, 51, 0.1);
-      background: rgba(255, 255, 255, 0.88);
-      color: var(--muted);
-      text-decoration: none;
-      transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .icon-link:hover {
-      transform: translateY(-2px);
-      color: #fff;
-      background: linear-gradient(135deg, var(--accent-2), var(--accent));
-      box-shadow: 0 14px 26px rgba(16, 32, 51, 0.16);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 0.95fr;
-      gap: 18px;
-    }
-
-    .contact-highlight {
+      gap: 9px;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 8px;
       background:
-        linear-gradient(135deg, rgba(16, 32, 51, 0.98), rgba(30, 90, 122, 0.94)),
-        #102033;
-      color: #f7fbff;
-    }
-
-    .contact-highlight p {
-      color: rgba(247, 251, 255, 0.8);
-    }
-
-    .contact-highlight .icon-link {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.14);
-      color: #f7fbff;
-    }
-
-    .contact-highlight .icon-link:hover {
-      background: linear-gradient(135deg, #d7a461, #b87a2b);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.42), transparent 42%),
+        linear-gradient(180deg, #42ad38, var(--start-green-dark));
       color: #fff;
+      font-size: 1.02rem;
+      font-weight: 900;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.2), 1px 1px 2px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
     }
 
-    .footer {
-      padding: 26px 0 36px;
-      color: var(--muted);
-      text-align: center;
-      font-size: 0.95rem;
+    .start-button[aria-expanded="true"],
+    .start-button:hover {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent 42%),
+        linear-gradient(180deg, #57c24b, #1a7413);
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
+    .start-button__mark {
+      width: 25px;
+      height: 25px;
+      display: grid;
+      place-items: center;
+      border-radius: 5px;
+      background: #fff;
+      color: #17670f;
+      font-size: 0.8rem;
+      font-weight: 900;
+      text-shadow: none;
+      box-shadow: inset -1px -1px 0 #b7d8b3;
     }
 
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
+    .taskbar__windows {
+      display: flex;
+      min-width: 0;
+      gap: 7px;
+      overflow-x: auto;
+      padding-bottom: 1px;
     }
 
-    @media (max-width: 980px) {
-      .hero__grid,
-      .about-grid,
-      .projects-grid,
-      .contact-grid {
+    .taskbar-window {
+      min-width: 130px;
+      max-width: 220px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.44);
+      border-radius: 4px;
+      padding: 0 10px;
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.23), transparent 45%),
+        #1556bd;
+      box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.22), inset -1px -1px 0 rgba(0, 0, 0, 0.24);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .taskbar-window.is-active {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.36), transparent 45%),
+        #0640a1;
+      box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.28);
+    }
+
+    .taskbar-window.is-minimized {
+      opacity: 0.75;
+    }
+
+    .taskbar-window span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .taskbar__tray {
+      height: 36px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-left: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 0 10px;
+      color: #fff;
+      font-weight: 800;
+      white-space: nowrap;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    }
+
+    .tray-speaker {
+      width: 24px;
+      height: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.48);
+      border-radius: 4px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      font-size: 0.76rem;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .window {
+        animation: window-in 0.16s ease-out;
+      }
+
+      .desktop-icon,
+      .quick-link,
+      .start-item,
+      .window__control,
+      .taskbar-window {
+        transition: background 0.14s ease, color 0.14s ease, transform 0.14s ease, filter 0.14s ease;
+      }
+
+      .desktop-icon:hover {
+        transform: translateY(-1px);
+      }
+    }
+
+    @keyframes window-in {
+      from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @media (max-width: 900px) {
+      body {
+        overflow: auto;
+      }
+
+      .desktop-shell {
+        min-height: 100svh;
+        overflow-x: hidden;
+        overflow-y: visible;
+      }
+
+      .desktop-shell::before {
+        left: 0;
+        right: 0;
+      }
+
+      .desktop {
+        display: block;
+        min-height: calc(100svh - var(--taskbar-height));
+        padding: 14px 12px 84px;
+      }
+
+      .desktop-icons {
+        width: 100%;
+        grid-template-columns: repeat(3, minmax(86px, 1fr));
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .desktop-icon {
+        width: 100%;
+        min-height: 88px;
+      }
+
+      .desktop-icon[data-tooltip]::after {
+        display: none;
+      }
+
+      .window,
+      .window.is-maximized {
+        position: relative;
+        left: auto !important;
+        top: auto !important;
+        width: 100% !important;
+        max-height: none;
+        height: auto;
+        margin: 10px 0;
+      }
+
+      .window__titlebar {
+        cursor: default;
+      }
+
+      .window__body {
+        max-height: none;
+      }
+
+      .window__body--explorer {
         grid-template-columns: 1fr;
       }
 
-      .hero__facts {
-        grid-template-columns: 1fr;
+      .explorer-tree {
+        display: none;
       }
 
-      .site-header__inner {
-        align-items: flex-start;
-        flex-direction: column;
+      .taskbar {
+        grid-template-columns: auto minmax(0, 1fr);
+        height: auto;
+        min-height: var(--taskbar-height);
       }
 
-      .site-nav {
-        justify-content: flex-start;
+      .start-button {
+        min-width: 102px;
+      }
+
+      .taskbar__tray {
+        display: none;
       }
     }
 
-    @media (max-width: 640px) {
-      .container {
-        width: min(var(--container), calc(100% - 26px));
+    @media (max-width: 560px) {
+      :root {
+        --taskbar-height: 54px;
       }
 
-      .hero {
-        padding-top: 42px;
+      .desktop {
+        padding-inline: 9px;
       }
 
-      .hero__main,
-      .hero__side,
-      .section-panel__header,
-      .section-panel__body {
-        padding-left: 20px;
-        padding-right: 20px;
+      .desktop-icons {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .hero__main {
-        padding-top: 24px;
-        padding-bottom: 24px;
+      .glyph {
+        transform: scale(0.88);
       }
 
-      .portrait {
-        min-height: 270px;
+      .window__menubar {
+        gap: 12px;
+        font-size: 0.8rem;
+      }
+
+      .window__body {
+        padding: 8px;
+      }
+
+      .txt-doc {
+        padding: 16px 12px;
+      }
+
+      .welcome-card__top {
+        grid-template-columns: 1fr;
+      }
+
+      .monitor-mark {
+        width: 56px;
+      }
+
+      .start-menu__body {
+        grid-template-columns: 1fr;
+      }
+
+      .start-menu__column--side {
+        border-left: 0;
+        border-top: 1px solid #c9c0a8;
+      }
+
+      .taskbar {
+        gap: 6px;
+        padding-inline: 5px;
+      }
+
+      .taskbar-window {
+        min-width: 112px;
       }
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container site-header__inner">
-      <a class="brand" href="#inicio">
-        <span class="brand__mark">JB</span>
-        <span class="brand__text">
-          <span class="brand__name">José Burguillos</span>
-          <span class="brand__role">Desarrollador Web Full Stack</span>
-        </span>
-      </a>
+  <a class="skip-link" href="#desktop-icons">Saltar a accesos del escritorio</a>
 
-      <nav class="site-nav" aria-label="Navegación principal">
-        <a href="#perfil">Perfil</a>
-        <a href="#experiencia">Experiencia</a>
-        <a href="#tecnologias">Tecnologías</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#contacto">Contacto</a>
+  <div class="desktop-shell">
+    <main class="desktop" aria-label="Escritorio interactivo del portfolio">
+      <nav class="desktop-icons" id="desktop-icons" aria-label="Carpetas y accesos del portfolio">
+        <button class="desktop-icon" type="button" data-open="about" data-tooltip="Abrir Sobre mi.txt" aria-label="Abrir carpeta Sobre mi">
+          <span class="glyph glyph--id" aria-hidden="true"></span>
+          <span class="desktop-icon__label">Sobre m&iacute;</span>
+        </button>
+
+        <button class="desktop-icon" type="button" data-open="projects" data-tooltip="Abrir Proyectos.txt" aria-label="Abrir carpeta Proyectos">
+          <span class="glyph glyph--folder" style="--folder-main:#e6a014;--folder-light:#ffdc69;--folder-tab:#ffec9a" aria-hidden="true">
+            <span class="glyph__mark"></span>
+          </span>
+          <span class="desktop-icon__label">Proyectos</span>
+        </button>
+
+        <button class="desktop-icon" type="button" data-open="skills" data-tooltip="Abrir Habilidades.txt" aria-label="Abrir carpeta Habilidades">
+          <span class="glyph glyph--tools" aria-hidden="true"></span>
+          <span class="desktop-icon__label">Habilidades</span>
+        </button>
+
+        <button class="desktop-icon" type="button" data-open="knowledge" data-tooltip="Abrir Conocimientos" aria-label="Abrir carpeta Conocimientos">
+          <span class="glyph glyph--folder" style="--folder-main:#59a52e;--folder-light:#9be365;--folder-tab:#b8ef88" aria-hidden="true">
+            <span class="glyph__mark"></span>
+          </span>
+          <span class="desktop-icon__label">Conocimientos</span>
+        </button>
+
+        <button class="desktop-icon" type="button" data-open="experience" data-tooltip="Abrir Experiencia y trayectoria" aria-label="Abrir carpeta Experiencia y trayectoria">
+          <span class="glyph glyph--folder" style="--folder-main:#be7a1e;--folder-light:#f2bd54;--folder-tab:#ffe08a" aria-hidden="true">
+            <span class="glyph__mark"></span>
+          </span>
+          <span class="desktop-icon__label">Experiencia / Trayectoria</span>
+        </button>
+
+        <button class="desktop-icon" type="button" data-open="contact" data-tooltip="Abrir Contacto.txt" aria-label="Abrir carpeta Contacto">
+          <span class="glyph glyph--contact" aria-hidden="true"></span>
+          <span class="desktop-icon__label">Contacto</span>
+        </button>
       </nav>
-    </div>
-  </header>
 
-  <main id="inicio">
-    <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__main reveal">
-          <span class="eyebrow"><i class="fa-solid fa-circle-check"></i> Perfil orientado a empresa</span>
-          <h1>Desarrollo web con mentalidad técnica, rigor y visión de negocio.</h1>
-          <p class="hero__lead">
-            Soy José Burguillos, desarrollador web Full Stack con experiencia en proyectos reales,
-            formación técnica sólida y una actitud muy enfocada a la calidad, la colaboración y la mejora continua.
-          </p>
-
-          <div class="hero__facts" aria-label="Resumen profesional">
-            <div class="fact">
-              <strong>Full Stack</strong>
-              <span>Frontend, backend y despliegue de soluciones web</span>
-            </div>
-            <div class="fact">
-              <strong>Experiencia real</strong>
-              <span>Trabajo en empresa, soporte técnico y entornos profesionales</span>
-            </div>
-            <div class="fact">
-              <strong>Enfoque empresarial</strong>
-              <span>Orden, comunicación y adaptación a equipos grandes</span>
-            </div>
+      <section class="window is-open" data-window="welcome" data-title="Bienvenido" style="--x: 224px; --y: 54px; --w: 430px; --h: 430px;" role="dialog" aria-labelledby="window-title-welcome">
+        <div class="window__titlebar" data-drag-handle>
+          <div class="window__title" id="window-title-welcome">
+            <span class="title-icon" aria-hidden="true"></span>
+            <span>Bienvenido</span>
           </div>
-
-          <div class="hero__actions">
-            <a class="button button--primary" href="#contacto"><i class="fa-solid fa-envelope"></i> Contactar</a>
-            <a class="button button--secondary" href="https://github.com/JoseBurguillos" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
-            <a class="button button--secondary" href="https://www.linkedin.com/in/jos%C3%A9-burguillos-88834932a/" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+          <div class="window__controls" aria-label="Controles de ventana">
+            <button class="window__control" type="button" data-action="minimize" aria-label="Minimizar Bienvenido">_</button>
+            <button class="window__control" type="button" data-action="maximize" aria-label="Maximizar Bienvenido">[]</button>
+            <button class="window__control window__control--close" type="button" data-action="close" aria-label="Cerrar Bienvenido">x</button>
           </div>
         </div>
-
-        <aside class="hero__side reveal">
-          <div class="portrait">
-            <img src="imagen linkedin.png" class="portrait__image" alt="Foto de perfil de José Burguillos" loading="lazy">
-            <div class="portrait__badge">
-              <i class="fa-solid fa-suitcase"></i>
-              Disponible para nuevas oportunidades
+        <div class="window__body">
+          <article class="welcome-card">
+            <div class="welcome-card__top">
+              <span class="monitor-mark" aria-hidden="true"></span>
+              <div>
+                <h1>Jos&eacute; Burguillos</h1>
+                <p><strong>Desarrollador Web Full Stack</strong></p>
+              </div>
             </div>
+            <p>
+              Desarrollo web con mentalidad t&eacute;cnica, rigor y visi&oacute;n de negocio.
+            </p>
+            <p>
+              Portfolio organizado como un escritorio interactivo. Abre las carpetas para consultar perfil, experiencia,
+              conocimientos, proyectos y contacto.
+            </p>
+            <div class="status-row" aria-label="Estado profesional">
+              <span class="status-pill"><span class="status-dot" aria-hidden="true"></span> Disponible</span>
+              <span class="status-pill">Perfil orientado a empresa</span>
+            </div>
+          </article>
+        </div>
+        <div class="window__status">
+          <span>6 accesos disponibles</span>
+          <span>Portfolio</span>
+        </div>
+      </section>
+
+      <section class="window is-open" data-window="about" data-title="Sobre mi.txt" style="--x: 700px; --y: 46px; --w: 740px; --h: 650px;" role="dialog" aria-labelledby="window-title-about">
+        <div class="window__titlebar" data-drag-handle>
+          <div class="window__title" id="window-title-about">
+            <span class="title-icon" aria-hidden="true"></span>
+            <span>Sobre mi.txt</span>
           </div>
-          <div class="hero__meta">
-            <div class="meta-list">
-              <div class="meta-item">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <div>
-                  <strong>Formación</strong>
-                  <span>ESO, SMR y actualmente DAW</span>
+          <div class="window__controls" aria-label="Controles de ventana">
+            <button class="window__control" type="button" data-action="minimize" aria-label="Minimizar Sobre mi">_</button>
+            <button class="window__control" type="button" data-action="maximize" aria-label="Maximizar Sobre mi">[]</button>
+            <button class="window__control window__control--close" type="button" data-action="close" aria-label="Cerrar Sobre mi">x</button>
+          </div>
+        </div>
+        <div class="window__menubar" aria-label="Menu de archivo simulado">
+          <span>Archivo</span>
+          <span>Edici&oacute;n</span>
+          <span>Formato</span>
+          <span>Ver</span>
+          <span>Ayuda</span>
+        </div>
+        <div class="window__body">
+          <article class="txt-doc">
+            <h1>Jos&eacute; Burguillos</h1>
+            <p>Desarrollador Web Full Stack</p>
+
+            <h2>Perfil</h2>
+            <p>
+              Desarrollo web con mentalidad t&eacute;cnica, rigor y visi&oacute;n de negocio.
+            </p>
+            <p>
+              Desarrollador web Full Stack con experiencia en proyectos reales, formaci&oacute;n t&eacute;cnica s&oacute;lida
+              y actitud enfocada a calidad, colaboraci&oacute;n y mejora continua.
+            </p>
+
+            <h2>Formaci&oacute;n</h2>
+            <p>
+              ESO, Sistemas Microinform&aacute;ticos y Redes (SMR) y actualmente cursando Desarrollo de Aplicaciones Web (DAW).
+            </p>
+
+            <h2>Sobre m&iacute;</h2>
+            <p>
+              Desarrollador web en formaci&oacute;n con base en ESO, Sistemas Microinform&aacute;ticos y Redes y actualmente
+              cursando Desarrollo de Aplicaciones Web.
+            </p>
+            <p>
+              Especializaci&oacute;n en desarrollo full stack con HTML, CSS, JavaScript, Angular y Laravel.
+            </p>
+            <p>
+              Persona constante, autodidacta, con inter&eacute;s en frontend y backend.
+            </p>
+            <p>
+              Adaptaci&oacute;n r&aacute;pida, resoluci&oacute;n de problemas, mejora continua, inter&eacute;s en nuevas tecnolog&iacute;as
+              e inteligencia artificial.
+            </p>
+
+            <h2>Stack principal mencionado</h2>
+            <p>JavaScript, Angular, React, PHP, Laravel, Java y Python.</p>
+          </article>
+        </div>
+        <div class="window__status">
+          <span>L&iacute;nea 1, columna 1</span>
+          <span>UTF-8</span>
+        </div>
+      </section>
+
+      <section class="window" data-window="projects" data-title="Proyectos.txt" style="--x: 300px; --y: 112px; --w: 670px; --h: 530px;" role="dialog" aria-labelledby="window-title-projects" hidden>
+        <div class="window__titlebar" data-drag-handle>
+          <div class="window__title" id="window-title-projects">
+            <span class="title-icon" aria-hidden="true"></span>
+            <span>Proyectos.txt</span>
+          </div>
+          <div class="window__controls" aria-label="Controles de ventana">
+            <button class="window__control" type="button" data-action="minimize" aria-label="Minimizar Proyectos">_</button>
+            <button class="window__control" type="button" data-action="maximize" aria-label="Maximizar Proyectos">[]</button>
+            <button class="window__control window__control--close" type="button" data-action="close" aria-label="Cerrar Proyectos">x</button>
+          </div>
+        </div>
+        <div class="window__menubar" aria-label="Menu de archivo simulado">
+          <span>Archivo</span>
+          <span>Edici&oacute;n</span>
+          <span>Formato</span>
+          <span>Ver</span>
+          <span>Ayuda</span>
+        </div>
+        <div class="window__body">
+          <article class="txt-doc">
+            <h1>Proyectos</h1>
+
+            <h2>Repositorio principal</h2>
+            <p>
+              Actualmente el portfolio enlaza al perfil de GitHub para revisar c&oacute;digo, estructura y proyectos
+              en los que Jos&eacute; est&aacute; trabajando.
+            </p>
+            <p>
+              No aparecen proyectos concretos descritos en el portfolio actual.
+            </p>
+            <p class="file-note">[PENDIENTE: a&ntilde;adir proyectos concretos]</p>
+
+            <div class="quick-links">
+              <a class="quick-link" href="https://github.com/JoseBurguillos" target="_blank" rel="noreferrer" aria-label="Abrir GitHub de Jose Burguillos">
+                GitHub
+              </a>
+            </div>
+          </article>
+        </div>
+        <div class="window__status">
+          <span>1 enlace externo</span>
+          <span>Solo datos existentes</span>
+        </div>
+      </section>
+
+      <section class="window" data-window="skills" data-title="Habilidades.txt" style="--x: 320px; --y: 170px; --w: 680px; --h: 560px;" role="dialog" aria-labelledby="window-title-skills" hidden>
+        <div class="window__titlebar" data-drag-handle>
+          <div class="window__title" id="window-title-skills">
+            <span class="title-icon" aria-hidden="true"></span>
+            <span>Habilidades.txt</span>
+          </div>
+          <div class="window__controls" aria-label="Controles de ventana">
+            <button class="window__control" type="button" data-action="minimize" aria-label="Minimizar Habilidades">_</button>
+            <button class="window__control" type="button" data-action="maximize" aria-label="Maximizar Habilidades">[]</button>
+            <button class="window__control window__control--close" type="button" data-action="close" aria-label="Cerrar Habilidades">x</button>
+          </div>
+        </div>
+        <div class="window__menubar" aria-label="Menu de archivo simulado">
+          <span>Archivo</span>
+          <span>Edici&oacute;n</span>
+          <span>Formato</span>
+          <span>Ver</span>
+          <span>Ayuda</span>
+        </div>
+        <div class="window__body">
+          <article class="txt-doc">
+            <h1>Habilidades</h1>
+            <p>Archivo centrado en habilidades blandas y aportaciones indicadas en el portfolio actual.</p>
+
+            <h2>Lo que aporta</h2>
+            <ul>
+              <li>Capacidad para integrarse en equipos de trabajo con rapidez.</li>
+              <li>Comunicaci&oacute;n clara y actitud orientada a la mejora continua.</li>
+              <li>Inter&eacute;s por software limpio, mantenible y &uacute;til.</li>
+              <li>Versatilidad entre soporte, frontend y backend.</li>
+            </ul>
+
+            <h2>Perfil profesional</h2>
+            <ul>
+              <li>Autodidacta.</li>
+              <li>Resolutivo.</li>
+              <li>Orientado a resultados.</li>
+              <li>Constante.</li>
+              <li>Adaptaci&oacute;n r&aacute;pida.</li>
+              <li>Resoluci&oacute;n de problemas.</li>
+              <li>Mejora continua.</li>
+              <li>Inter&eacute;s en nuevas tecnolog&iacute;as e inteligencia artificial.</li>
+            </ul>
+          </article>
+        </div>
+        <div class="window__status">
+          <span>Habilidades profesionales</span>
+          <span>TXT</span>
+        </div>
+      </section>
+
+      <section class="window" data-window="knowledge" data-title="Conocimientos" style="--x: 252px; --y: 120px; --w: 780px; --h: 560px;" role="dialog" aria-labelledby="window-title-knowledge" hidden>
+        <div class="window__titlebar" data-drag-handle>
+          <div class="window__title" id="window-title-knowledge">
+            <span class="title-icon" aria-hidden="true"></span>
+            <span>Explorador - Conocimientos</span>
+          </div>
+          <div class="window__controls" aria-label="Controles de ventana">
+            <button class="window__control" type="button" data-action="minimize" aria-label="Minimizar Conocimientos">_</button>
+            <button class="window__control" type="button" data-action="maximize" aria-label="Maximizar Conocimientos">[]</button>
+            <button class="window__control window__control--close" type="button" data-action="close" aria-label="Cerrar Conocimientos">x</button>
+          </div>
+        </div>
+        <div class="window__menubar" aria-label="Menu de explorador simulado">
+          <span>Archivo</span>
+          <span>Edici&oacute;n</span>
+          <span>Ver</span>
+          <span>Favoritos</span>
+          <span>Herramientas</span>
+          <span>Ayuda</span>
+        </div>
+        <div class="window__body window__body--explorer">
+          <aside class="explorer-tree" aria-label="Arbol de conocimientos">
+            <strong>C:\Portfolio\Conocimientos</strong>
+            <ul class="tree-list">
+              <li>Frontend</li>
+              <li>Backend</li>
+              <li>DevOps / Tools</li>
+            </ul>
+          </aside>
+          <article class="explorer-panel">
+            <div class="file-grid">
+              <section class="file-card">
+                <span class="file-card__icon" aria-hidden="true"></span>
+                <div class="file-card__name">Frontend.txt</div>
+                <div class="tag-row" aria-label="Tecnologias frontend">
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">Angular</span>
+                  <span class="tag">React</span>
+                  <span class="tag">Bootstrap</span>
+                  <span class="tag">Tailwind</span>
                 </div>
-              </div>
-              <div class="meta-item">
-                <i class="fa-solid fa-code"></i>
-                <div>
-                  <strong>Stack principal</strong>
-                  <span>JavaScript, Angular, React, PHP, Laravel, Java y Python</span>
+              </section>
+
+              <section class="file-card">
+                <span class="file-card__icon" aria-hidden="true"></span>
+                <div class="file-card__name">Backend.txt</div>
+                <div class="tag-row" aria-label="Tecnologias backend">
+                  <span class="tag">Java</span>
+                  <span class="tag">C#</span>
+                  <span class="tag">PHP</span>
+                  <span class="tag">Node.js</span>
+                  <span class="tag">MySQL</span>
+                  <span class="tag">Laravel</span>
+                  <span class="tag">Python</span>
                 </div>
-              </div>
-              <div class="meta-item">
-                <i class="fa-solid fa-chart-line"></i>
-                <div>
-                  <strong>Perfil profesional</strong>
-                  <span>Autodidacta, resolutivo y orientado a resultados</span>
+              </section>
+
+              <section class="file-card">
+                <span class="file-card__icon" aria-hidden="true"></span>
+                <div class="file-card__name">DevOps-Tools.txt</div>
+                <div class="tag-row" aria-label="Herramientas y DevOps">
+                  <span class="tag">Docker</span>
+                  <span class="tag">GitHub</span>
+                  <span class="tag">VS Code</span>
                 </div>
-              </div>
+              </section>
             </div>
-          </div>
-        </aside>
-      </div>
-    </section>
+          </article>
+        </div>
+        <div class="window__status">
+          <span>3 archivos</span>
+          <span>Tecnolog&iacute;as existentes</span>
+        </div>
+      </section>
 
-    <section class="block" id="perfil">
-      <div class="container section-panel reveal">
-        <div class="section-panel__header">
-          <div class="section-title">
-            <span class="eyebrow"><i class="fa-solid fa-id-card"></i> Perfil</span>
-            <h2>Un candidato con base técnica y actitud profesional</h2>
+      <section class="window" data-window="experience" data-title="Experiencia y trayectoria.txt" style="--x: 380px; --y: 90px; --w: 760px; --h: 620px;" role="dialog" aria-labelledby="window-title-experience" hidden>
+        <div class="window__titlebar" data-drag-handle>
+          <div class="window__title" id="window-title-experience">
+            <span class="title-icon" aria-hidden="true"></span>
+            <span>Experiencia y trayectoria.txt</span>
+          </div>
+          <div class="window__controls" aria-label="Controles de ventana">
+            <button class="window__control" type="button" data-action="minimize" aria-label="Minimizar Experiencia y trayectoria">_</button>
+            <button class="window__control" type="button" data-action="maximize" aria-label="Maximizar Experiencia y trayectoria">[]</button>
+            <button class="window__control window__control--close" type="button" data-action="close" aria-label="Cerrar Experiencia y trayectoria">x</button>
           </div>
         </div>
-        <div class="section-panel__body">
-          <div class="about-grid">
-            <article class="card about-card">
-              <h3>Sobre mí</h3>
-              <p>
-                Soy desarrollador web en formación con base en ESO, Sistemas Microinformáticos y Redes (SMR)
-                y actualmente cursando Desarrollo de Aplicaciones Web (DAW). Me estoy especializando en desarrollo
-                full stack con tecnologías como HTML, CSS, JavaScript, Angular y Laravel.
-              </p>
-              <p>
-                Me considero una persona constante, autodidacta y con interés en entender tanto el frontend como el backend.
-                Me adapto rápido, disfruto resolviendo problemas y busco mejorar continuamente como programador,
-                con especial interés en nuevas tecnologías e inteligencia artificial.
-              </p>
-            </article>
+        <div class="window__menubar" aria-label="Menu de archivo simulado">
+          <span>Archivo</span>
+          <span>Edici&oacute;n</span>
+          <span>Formato</span>
+          <span>Ver</span>
+          <span>Ayuda</span>
+        </div>
+        <div class="window__body">
+          <article class="txt-doc">
+            <h1>Experiencia / Trayectoria</h1>
 
-            <article class="card about-card section-accent">
-              <h3>Lo que aporto</h3>
-              <ul class="bullets">
-                <li>Capacidad para integrarme en equipos de trabajo con rapidez.</li>
-                <li>Comunicación clara y actitud orientada a la mejora continua.</li>
-                <li>Interés por desarrollar software limpio, mantenible y útil.</li>
-                <li>Versatilidad entre soporte, frontend y backend.</li>
-              </ul>
-            </article>
+            <h2>Deuser (Indra Group)</h2>
+            <p><strong>Programador Full Stack - 4 meses</strong></p>
+            <ul>
+              <li>Desarrollo de funcionalidades frontend y backend.</li>
+              <li>Uso de JavaScript en proyectos reales.</li>
+              <li>Dise&ntilde;o y mejora de interfaces web.</li>
+              <li>Trabajo en equipo con metodolog&iacute;as profesionales.</li>
+            </ul>
+
+            <h2>Recosur</h2>
+            <p><strong>Pr&aacute;cticas - 3 meses</strong></p>
+            <ul>
+              <li>Soporte t&eacute;cnico a usuarios.</li>
+              <li>Mantenimiento y configuraci&oacute;n de equipos.</li>
+              <li>Resoluci&oacute;n de incidencias inform&aacute;ticas.</li>
+              <li>Aprendizaje en entorno laboral real.</li>
+            </ul>
+
+            <h2>Formaci&oacute;n incluida en el portfolio</h2>
+            <p>ESO, SMR y actualmente DAW.</p>
+          </article>
+        </div>
+        <div class="window__status">
+          <span>2 experiencias</span>
+          <span>Trayectoria</span>
+        </div>
+      </section>
+
+      <section class="window" data-window="contact" data-title="Contacto.txt" style="--x: 430px; --y: 156px; --w: 690px; --h: 560px;" role="dialog" aria-labelledby="window-title-contact" hidden>
+        <div class="window__titlebar" data-drag-handle>
+          <div class="window__title" id="window-title-contact">
+            <span class="title-icon" aria-hidden="true"></span>
+            <span>Contacto.txt</span>
+          </div>
+          <div class="window__controls" aria-label="Controles de ventana">
+            <button class="window__control" type="button" data-action="minimize" aria-label="Minimizar Contacto">_</button>
+            <button class="window__control" type="button" data-action="maximize" aria-label="Maximizar Contacto">[]</button>
+            <button class="window__control window__control--close" type="button" data-action="close" aria-label="Cerrar Contacto">x</button>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="block" id="experiencia">
-      <div class="container section-panel reveal">
-        <div class="section-panel__header">
-          <div class="section-title">
-            <span class="eyebrow"><i class="fa-solid fa-briefcase"></i> Experiencia</span>
-            <h2>Experiencia aplicada en entornos reales</h2>
-          </div>
+        <div class="window__menubar" aria-label="Menu de archivo simulado">
+          <span>Archivo</span>
+          <span>Edici&oacute;n</span>
+          <span>Formato</span>
+          <span>Ver</span>
+          <span>Ayuda</span>
         </div>
-        <div class="section-panel__body">
-          <div class="timeline">
-            <article class="card experience-card">
-              <h3>Deuser (Indra Group)</h3>
-              <div class="role">Programador Full Stack · 4 meses</div>
-              <ul class="bullets">
-                <li>Desarrollo de funcionalidades frontend y backend.</li>
-                <li>Uso de JavaScript en proyectos reales.</li>
-                <li>Diseño y mejora de interfaces web.</li>
-                <li>Trabajo en equipo con metodologías profesionales.</li>
-              </ul>
-            </article>
+        <div class="window__body">
+          <article class="txt-doc">
+            <h1>Contacto</h1>
+            <p>
+              Abierto a posiciones de desarrollo web, pr&aacute;cticas avanzadas o incorporaciones junior.
+            </p>
 
-            <article class="card experience-card">
-              <h3>Recosur</h3>
-              <div class="role">Prácticas · 3 meses</div>
-              <ul class="bullets">
-                <li>Soporte técnico a usuarios.</li>
-                <li>Mantenimiento y configuración de equipos.</li>
-                <li>Resolución de incidencias informáticas.</li>
-                <li>Aprendizaje en entorno laboral real.</li>
-              </ul>
-            </article>
-          </div>
+            <h2>Datos de contacto</h2>
+            <dl>
+              <div>
+                <dt>Email</dt>
+                <dd><a href="mailto:joseab078@gmail.com">joseab078@gmail.com</a></dd>
+              </div>
+              <div>
+                <dt>LinkedIn</dt>
+                <dd><a href="https://www.linkedin.com/in/jos%C3%A9-burguillos-88834932a/" target="_blank" rel="noreferrer">linkedin.com/in/jos&eacute;-burguillos-88834932a</a></dd>
+              </div>
+              <div>
+                <dt>GitHub</dt>
+                <dd><a href="https://github.com/JoseBurguillos" target="_blank" rel="noreferrer">github.com/JoseBurguillos</a></dd>
+              </div>
+              <div>
+                <dt>Google Calendar</dt>
+                <dd><a href="https://calendar.app.google/XLdZw3HhWRP7AxGh8" target="_blank" rel="noreferrer">calendar.app.google/XLdZw3HhWRP7AxGh8</a></dd>
+              </div>
+            </dl>
+
+            <div class="quick-links">
+              <a class="quick-link" href="mailto:joseab078@gmail.com" aria-label="Enviar correo a Jose Burguillos">Enviar correo</a>
+              <a class="quick-link" href="https://www.linkedin.com/in/jos%C3%A9-burguillos-88834932a/" target="_blank" rel="noreferrer" aria-label="Abrir LinkedIn de Jose Burguillos">LinkedIn</a>
+              <a class="quick-link" href="https://github.com/JoseBurguillos" target="_blank" rel="noreferrer" aria-label="Abrir GitHub de Jose Burguillos">GitHub</a>
+              <a class="quick-link" href="https://calendar.app.google/XLdZw3HhWRP7AxGh8" target="_blank" rel="noreferrer" aria-label="Abrir Google Calendar de Jose Burguillos">Concretar cita</a>
+            </div>
+          </article>
         </div>
-      </div>
-    </section>
-
-    <section class="block" id="tecnologias">
-      <div class="container section-panel reveal">
-        <div class="section-panel__header">
-          <div class="section-title">
-            <span class="eyebrow"><i class="fa-solid fa-layer-group"></i> Tecnologías</span>
-            <h2>Stack técnico equilibrado y versátil</h2>
-          </div>
+        <div class="window__status">
+          <span>4 accesos</span>
+          <span>Contacto</span>
         </div>
-        <div class="section-panel__body">
-          <div class="skills-grid">
-            <article class="card skills-card">
-              <h3>Frontend</h3>
-              <div class="skills">
-                <span class="skill">JavaScript</span>
-                <span class="skill">Angular</span>
-                <span class="skill">React</span>
-                <span class="skill">Bootstrap</span>
-                <span class="skill">Tailwind</span>
-              </div>
-            </article>
+      </section>
+    </main>
 
-            <article class="card skills-card section-accent">
-              <h3>Backend</h3>
-              <div class="skills">
-                <span class="skill">Java</span>
-                <span class="skill">C#</span>
-                <span class="skill">PHP</span>
-                <span class="skill">Node.js</span>
-                <span class="skill">MySQL</span>
-                <span class="skill">Laravel</span>
-                <span class="skill">Python</span>
-              </div>
-            </article>
-
-            <article class="card skills-card">
-              <h3>DevOps / Tools</h3>
-              <div class="skills">
-                <span class="skill">Docker</span>
-                <span class="skill">GitHub</span>
-                <span class="skill">VS Code</span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="block" id="proyectos">
-      <div class="container section-panel reveal">
-        <div class="section-panel__header">
-          <div class="section-title">
-            <span class="eyebrow"><i class="fa-solid fa-diagram-project"></i> Proyectos</span>
-            <h2>Presencia profesional y acceso directo a mi trabajo</h2>
-          </div>
-        </div>
-        <div class="section-panel__body">
-          <div class="projects-grid">
-            <article class="card project-card">
-              <div class="project-card__top">
-                <h3>Repositorio principal</h3>
-                <span class="project-chip">GitHub</span>
-              </div>
-              <p>
-                Acceso directo a mi perfil de GitHub, donde podrás revisar el tipo de código, estructura y proyectos
-                en los que estoy trabajando.
-              </p>
-              <div class="project-links">
-                <a class="icon-link" href="https://github.com/JoseBurguillos" target="_blank" rel="noreferrer" aria-label="GitHub">
-                  <i class="fa-brands fa-github"></i>
-                </a>
-              </div>
-            </article>
-
-            <article class="card project-card section-accent">
-              <div class="project-card__top">
-                <h3>Perfil profesional</h3>
-                <span class="project-chip">LinkedIn</span>
-              </div>
-              <p>
-                También puedes revisar mi trayectoria, formación y experiencia laboral en LinkedIn para tener una visión
-                más completa de mi perfil.
-              </p>
-              <div class="project-links">
-                <a class="icon-link" href="https://www.linkedin.com/in/jos%C3%A9-burguillos-88834932a/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                  <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-              </div>
-            </article>
-          </div>
+    <aside class="start-menu" id="start-menu" aria-label="Menu de inicio simulado" hidden>
+      <div class="start-menu__header">
+        <span class="start-avatar" aria-hidden="true">JB</span>
+        <div>
+          <span class="start-menu__name">Jos&eacute; Burguillos</span>
+          <span class="start-menu__role">Desarrollador Web Full Stack</span>
         </div>
       </div>
-    </section>
-
-    <section class="block" id="contacto">
-      <div class="container section-panel reveal">
-        <div class="section-panel__header">
-          <div class="section-title">
-            <span class="eyebrow"><i class="fa-solid fa-paper-plane"></i> Contacto</span>
-            <h2>Preparado para incorporarme a un equipo exigente</h2>
-          </div>
+      <div class="start-menu__body">
+        <div class="start-menu__column" aria-label="Accesos principales">
+          <button class="start-item" type="button" data-open="about">
+            <span class="start-item__glyph" aria-hidden="true"></span>
+            Sobre m&iacute;
+          </button>
+          <button class="start-item" type="button" data-open="projects">
+            <span class="start-item__glyph" aria-hidden="true"></span>
+            Proyectos
+          </button>
+          <button class="start-item" type="button" data-open="skills">
+            <span class="start-item__glyph" aria-hidden="true"></span>
+            Habilidades
+          </button>
+          <button class="start-item" type="button" data-open="knowledge">
+            <span class="start-item__glyph" aria-hidden="true"></span>
+            Conocimientos
+          </button>
+          <button class="start-item" type="button" data-open="experience">
+            <span class="start-item__glyph" aria-hidden="true"></span>
+            Experiencia / Trayectoria
+          </button>
+          <button class="start-item" type="button" data-open="contact">
+            <span class="start-item__glyph" aria-hidden="true"></span>
+            Contacto
+          </button>
         </div>
-        <div class="section-panel__body">
-          <div class="contact-grid">
-            <article class="card contact-card contact-highlight">
-              <div class="contact-copy">
-                <h3>Hablemos</h3>
-                <p>
-                  La forma más rápida de contactarme es por correo. Si preferís, podéis pedirme una reunión de 30 minutos
-                  por Teams o Meet y os respondo con disponibilidad.
-                </p>
-                <a class="button button--primary" href="mailto:joseab078@gmail.com?subject=Contacto%20desde%20tu%20portfolio&body=Hola%20Jos%C3%A9,%0A%0AVengo%20de%20tu%20portfolio%20y%20me%20gustar%C3%ADa%20hablar%20contigo.%0A%0A%20-%20Nombre:%0A%20-%20Empresa:%0A%20-%20Motivo:%0A%0ASi%20te%20encaja,%20podemos%20agendar%20una%20reuni%C3%B3n%20de%2030%20minutos%20por%20Teams%20o%20Meet.%0A%0AGracias." aria-label="Enviar correo a José Burguillos">
-                  <i class="fa-solid fa-envelope"></i> Escribir por correo
-                </a>
-                <a class="button button--secondary" href="mailto:joseab078@gmail.com?subject=Solicitud%20de%20reuni%C3%B3n%20de%2030%20minutos&body=Hola%20Jos%C3%A9,%0A%0AQuisiera%20solicitar%20una%20reuni%C3%B3n%20de%2030%20minutos%20por%20Teams%20o%20Meet.%0A%0AMe%20viene%20bien%20coordinarla%20en%20estos%20horarios:%0A%0A-%0A-%0A-%0A%0AGracias." aria-label="Solicitar reunión de 30 minutos por Teams o Meet">
-                  <i class="fa-solid fa-calendar-days"></i> Solicitar reunión de 30 min
-                </a>
-              </div>
-              <div class="contact-links contact-links--stacked">
-                <a class="icon-link" href="mailto:joseab078@gmail.com" aria-label="Abrir correo">
-                  <i class="fa-solid fa-at"></i>
-                </a>
-                <a class="icon-link" href="https://www.linkedin.com/in/jos%C3%A9-burguillos-88834932a/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                  <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-                <a class="icon-link" href="https://github.com/JoseBurguillos" target="_blank" rel="noreferrer" aria-label="GitHub">
-                  <i class="fa-brands fa-github"></i>
-                </a>
-              </div>
-            </article>
 
-            <article class="card contact-card">
-              <h3>Disponibilidad</h3>
-              <p>
-                Estoy abierto a posiciones de desarrollo web, prácticas avanzadas o incorporaciones junior donde pueda
-                seguir creciendo y aportar desde el primer día.
-              </p>
-              <ul class="bullets">
-                <li>Contacto principal: <a href="mailto:joseab078@gmail.com"><strong>joseab078@gmail.com</strong></a></li>
-                <li>Reunión de 30 minutos disponible por Teams o Meet bajo petición.</li>
-                <li>LinkedIn y GitHub disponibles para revisión inmediata.</li>
-              </ul>
-            </article>
-          </div>
+        <div class="start-menu__column start-menu__column--side" aria-label="Enlaces rapidos">
+          <a class="start-item" href="mailto:joseab078@gmail.com">
+            <span class="start-item__glyph" aria-hidden="true"></span>
+            Email
+          </a>
+          <a class="start-item" href="https://github.com/JoseBurguillos" target="_blank" rel="noreferrer">
+            <span class="start-item__glyph" aria-hidden="true"></span>
+            GitHub
+          </a>
+          <a class="start-item" href="https://www.linkedin.com/in/jos%C3%A9-burguillos-88834932a/" target="_blank" rel="noreferrer">
+            <span class="start-item__glyph" aria-hidden="true"></span>
+            LinkedIn
+          </a>
+          <a class="start-item" href="https://calendar.app.google/XLdZw3HhWRP7AxGh8" target="_blank" rel="noreferrer">
+            <span class="start-item__glyph" aria-hidden="true"></span>
+            Calendar
+          </a>
         </div>
       </div>
-    </section>
-  </main>
+      <div class="start-menu__footer">
+        <button class="system-button" type="button" data-close-start>Cerrar men&uacute;</button>
+      </div>
+    </aside>
 
-  <footer class="footer">
-    © 2026 José Burguillos
-  </footer>
+    <footer class="taskbar" aria-label="Barra de tareas simulada">
+      <button class="start-button" type="button" id="start-button" aria-controls="start-menu" aria-expanded="false">
+        <span class="start-button__mark" aria-hidden="true">JB</span>
+        Inicio
+      </button>
+      <div class="taskbar__windows" id="taskbar-windows" aria-label="Ventanas abiertas"></div>
+      <div class="taskbar__tray" aria-label="Area del sistema">
+        <span class="tray-speaker" aria-hidden="true">VOL</span>
+        <time id="system-clock" datetime="">00:00</time>
+      </div>
+    </footer>
+  </div>
 
   <script>
-    const bookingUrl = "https://calendar.app.google/XLdZw3HhWRP7AxGh8";
-    const fallbackEmail = "mailto:joseab078@gmail.com";
-    const hasBookingUrl = bookingUrl && !bookingUrl.includes("REEMPLAZA_AQUI_TU_LINK_DE_GOOGLE_CALENDAR");
+    (() => {
+      const windows = Array.from(document.querySelectorAll(".window"));
+      const openers = Array.from(document.querySelectorAll("[data-open]"));
+      const taskbar = document.querySelector("#taskbar-windows");
+      const startButton = document.querySelector("#start-button");
+      const startMenu = document.querySelector("#start-menu");
+      const clock = document.querySelector("#system-clock");
+      const mobileQuery = window.matchMedia("(max-width: 900px)");
+      let topZ = 30;
+      let activeWindowId = "about";
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
+      const getWindow = (id) => windows.find((windowElement) => windowElement.dataset.window === id);
+
+      const clampWindowIntoViewport = (windowElement) => {
+        if (mobileQuery.matches || windowElement.hidden || windowElement.classList.contains("is-maximized")) return;
+        const rect = windowElement.getBoundingClientRect();
+        const maxLeft = Math.max(8, window.innerWidth - rect.width - 12);
+        const maxTop = Math.max(8, window.innerHeight - rect.height - 60);
+        const nextLeft = Math.max(8, Math.min(rect.left, maxLeft));
+        const nextTop = Math.max(8, Math.min(rect.top, maxTop));
+        windowElement.style.left = `${nextLeft}px`;
+        windowElement.style.top = `${nextTop}px`;
+      };
+
+      const setSelectedIcon = (id) => {
+        openers.forEach((opener) => {
+          opener.classList.toggle("is-selected", opener.dataset.open === id && opener.classList.contains("desktop-icon"));
+        });
+      };
+
+      const bringToFront = (windowElement) => {
+        if (!windowElement) return;
+        topZ += 1;
+        windowElement.style.zIndex = String(topZ);
+        activeWindowId = windowElement.dataset.window;
+        setSelectedIcon(activeWindowId);
+        updateTaskbar();
+      };
+
+      const openWindow = (id) => {
+        const windowElement = getWindow(id);
+        if (!windowElement) return;
+        windowElement.hidden = false;
+        windowElement.classList.add("is-open");
+        windowElement.classList.remove("is-minimized");
+        windowElement.setAttribute("aria-hidden", "false");
+        clampWindowIntoViewport(windowElement);
+        bringToFront(windowElement);
+        updateTaskbar();
+        if (mobileQuery.matches) {
+          windowElement.scrollIntoView({ block: "start", behavior: "smooth" });
+        }
+      };
+
+      const closeWindow = (windowElement) => {
+        windowElement.hidden = true;
+        windowElement.classList.remove("is-open", "is-minimized", "is-maximized");
+        windowElement.setAttribute("aria-hidden", "true");
+        if (activeWindowId === windowElement.dataset.window) {
+          const nextOpen = windows.find((candidate) => candidate.classList.contains("is-open") && !candidate.hidden);
+          activeWindowId = nextOpen ? nextOpen.dataset.window : "";
+        }
+        updateTaskbar();
+      };
+
+      const minimizeWindow = (windowElement) => {
+        windowElement.classList.add("is-minimized");
+        windowElement.hidden = true;
+        windowElement.setAttribute("aria-hidden", "true");
+        updateTaskbar();
+      };
+
+      const restoreWindow = (windowElement) => {
+        windowElement.hidden = false;
+        windowElement.classList.remove("is-minimized");
+        windowElement.setAttribute("aria-hidden", "false");
+        clampWindowIntoViewport(windowElement);
+        bringToFront(windowElement);
+      };
+
+      const toggleMaximize = (windowElement) => {
+        windowElement.classList.toggle("is-maximized");
+        restoreWindow(windowElement);
+      };
+
+      function updateTaskbar() {
+        const openWindows = windows.filter((windowElement) => windowElement.classList.contains("is-open"));
+        taskbar.innerHTML = "";
+
+        openWindows.forEach((windowElement) => {
+          const button = document.createElement("button");
+          const id = windowElement.dataset.window;
+          button.type = "button";
+          button.className = "taskbar-window";
+          button.classList.toggle("is-active", id === activeWindowId && !windowElement.hidden);
+          button.classList.toggle("is-minimized", windowElement.classList.contains("is-minimized"));
+          button.setAttribute("aria-label", `Restaurar ${windowElement.dataset.title}`);
+          button.innerHTML = `<span class="title-icon" aria-hidden="true"></span><span>${windowElement.dataset.title}</span>`;
+          button.addEventListener("click", () => {
+            if (windowElement.hidden || windowElement.classList.contains("is-minimized")) {
+              restoreWindow(windowElement);
+            } else if (activeWindowId === id) {
+              minimizeWindow(windowElement);
+            } else {
+              bringToFront(windowElement);
+            }
+          });
+          taskbar.append(button);
+        });
+      }
+
+      const toggleStartMenu = (forceOpen) => {
+        const shouldOpen = typeof forceOpen === "boolean" ? forceOpen : startMenu.hidden;
+        startMenu.hidden = !shouldOpen;
+        startButton.setAttribute("aria-expanded", String(shouldOpen));
+      };
+
+      openers.forEach((opener) => {
+        opener.addEventListener("click", () => {
+          openWindow(opener.dataset.open);
+          if (opener.closest(".start-menu")) toggleStartMenu(false);
+        });
+      });
+
+      windows.forEach((windowElement) => {
+        windowElement.addEventListener("pointerdown", () => bringToFront(windowElement));
+        windowElement.querySelectorAll("[data-action]").forEach((control) => {
+          control.addEventListener("click", (event) => {
+            event.stopPropagation();
+            const action = control.dataset.action;
+            if (action === "close") closeWindow(windowElement);
+            if (action === "minimize") minimizeWindow(windowElement);
+            if (action === "maximize") toggleMaximize(windowElement);
+          });
+        });
+      });
+
+      startButton.addEventListener("click", () => toggleStartMenu());
+      document.querySelector("[data-close-start]").addEventListener("click", () => toggleStartMenu(false));
+
+      document.addEventListener("click", (event) => {
+        if (!startMenu.hidden && !startMenu.contains(event.target) && !startButton.contains(event.target)) {
+          toggleStartMenu(false);
         }
       });
-    }, { threshold: 0.14 });
 
-    document.querySelectorAll(".reveal, .card").forEach((element) => {
-      observer.observe(element);
-    });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          toggleStartMenu(false);
+        }
+      });
 
-    const emailLink = document.querySelector('.contact-copy .button--primary[href^="mailto:"]');
-    if (emailLink) {
-      emailLink.href = "mailto:joseab078@gmail.com";
-    }
+      windows.forEach((windowElement) => {
+        const titlebar = windowElement.querySelector("[data-drag-handle]");
+        let dragState = null;
 
-    const bookingButton = document.querySelector('.button--secondary[href^="mailto:"]');
-    if (bookingButton) {
-      bookingButton.classList.add("button--calendar");
-      bookingButton.href = hasBookingUrl ? bookingUrl : fallbackEmail;
-      bookingButton.target = hasBookingUrl ? "_blank" : "_self";
-      bookingButton.rel = hasBookingUrl ? "noreferrer" : "";
-      bookingButton.setAttribute(
-        "aria-label",
-        hasBookingUrl
-          ? "Reservar reunion en Google Calendar"
-          : "Solicitar reunion por correo"
-      );
-      bookingButton.innerHTML = hasBookingUrl
-        ? '<i class="fa-solid fa-calendar-check"></i> Concretar cita'
-        : '<i class="fa-solid fa-calendar-days"></i> Solicitar reuni\u00f3n de 30 min';
-    }
+        titlebar.addEventListener("pointerdown", (event) => {
+          if (mobileQuery.matches || event.target.closest("button") || windowElement.classList.contains("is-maximized")) {
+            return;
+          }
 
-    const bookingCopy = document.querySelector(".contact-copy p");
-    if (bookingCopy) {
-      bookingCopy.textContent =
-        "La forma mas rapida de contactarme es por correo para consultas generales. Si preferis, podeis concretar una cita de 30 minutos desde Google Calendar y el enlace de Google Meet se generara automaticamente al confirmar la cita.";
-    }
+          const rect = windowElement.getBoundingClientRect();
+          dragState = {
+            pointerId: event.pointerId,
+            offsetX: event.clientX - rect.left,
+            offsetY: event.clientY - rect.top
+          };
+          titlebar.setPointerCapture(event.pointerId);
+          bringToFront(windowElement);
+        });
 
-    const availabilityItem = document.querySelector(".contact-card .bullets li:nth-child(2)");
-    if (availabilityItem) {
-      availabilityItem.textContent =
-        "Cita de 30 minutos disponible por Google Calendar con Meet automatico.";
-    }
+        titlebar.addEventListener("pointermove", (event) => {
+          if (!dragState || dragState.pointerId !== event.pointerId) return;
+          const maxLeft = window.innerWidth - Math.min(windowElement.offsetWidth, window.innerWidth * 0.9) - 8;
+          const maxTop = window.innerHeight - windowElement.offsetHeight - 58;
+          const nextLeft = Math.max(8, Math.min(event.clientX - dragState.offsetX, Math.max(8, maxLeft)));
+          const nextTop = Math.max(8, Math.min(event.clientY - dragState.offsetY, Math.max(8, maxTop)));
+          windowElement.style.left = `${nextLeft}px`;
+          windowElement.style.top = `${nextTop}px`;
+        });
+
+        titlebar.addEventListener("pointerup", (event) => {
+          if (!dragState || dragState.pointerId !== event.pointerId) return;
+          titlebar.releasePointerCapture(event.pointerId);
+          dragState = null;
+        });
+
+        titlebar.addEventListener("pointercancel", () => {
+          dragState = null;
+        });
+      });
+
+      const updateClock = () => {
+        const now = new Date();
+        clock.textContent = new Intl.DateTimeFormat("es-ES", {
+          hour: "2-digit",
+          minute: "2-digit"
+        }).format(now);
+        clock.dateTime = now.toISOString();
+      };
+
+      updateClock();
+      setInterval(updateClock, 30000);
+      window.addEventListener("resize", () => {
+        windows.forEach(clampWindowIntoViewport);
+      });
+      windows.filter((windowElement) => windowElement.classList.contains("is-open")).forEach(bringToFront);
+      windows.forEach(clampWindowIntoViewport);
+      updateTaskbar();
+    })();
   </script>
 </body>
 </html>
