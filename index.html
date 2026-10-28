@@ -3,1339 +3,302 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jose Burguillos | Node.js, Angular y Soporte IT</title>
-  <meta name="description" content="Portfolio de Jose Burguillos, desarrollador Full Stack enfocado en Node.js y Angular, y técnico de soporte IT, con conocimientos de sistemas, redes, Laravel, React, bases de datos e IA.">
-  <meta name="author" content="Jose Burguillos">
-  <meta property="og:title" content="Jose Burguillos | Node.js, Angular y Soporte IT">
-  <meta property="og:description" content="Desarrollo con Node.js y Angular, soporte IT, helpdesk y sistemas. Experiencia en aplicaciones empresariales, resolución de incidencias y atención a usuarios.">
+  <meta name="theme-color" content="#0d1726">
+  <title>José Burguillos — Desarrollo web, Soporte IT y Automatización</title>
+  <meta name="description" content="Portfolio de José Burguillos, desarrollador web junior (Angular, Node.js, C#) con experiencia en soporte IT y automatización con n8n e IA. Lucena, Córdoba.">
+  <meta name="author" content="José Burguillos">
+  <meta property="og:title" content="José Burguillos — Desarrollo web, Soporte IT y Automatización">
+  <meta property="og:description" content="Desarrollador web junior con base en sistemas. Angular, Node.js, APIs REST, n8n e IA.">
   <meta property="og:type" content="website">
-
-  <style>
-    :root {
-      --bg: #f5f3ef;
-      --surface: #ffffff;
-      --surface-strong: #111827;
-      --ink: #141923;
-      --muted: #5f6878;
-      --line: #d9d5ce;
-      --line-dark: rgba(255, 255, 255, 0.18);
-      --brand: #183153;
-      --accent: #2f6f5e;
-      --accent-2: #a85d32;
-      --soft: #ebe7df;
-      --chip: #eef1f3;
-      --shadow: 0 24px 70px rgba(28, 34, 44, 0.12);
-      --radius: 8px;
-      --max: 1180px;
-      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--font);
-      color: var(--ink);
-      background:
-        linear-gradient(90deg, rgba(20, 25, 35, 0.045) 1px, transparent 1px),
-        linear-gradient(180deg, #fbfaf7 0%, var(--bg) 46%, #ece8df 100%);
-      background-size: 72px 72px, auto;
-      line-height: 1.55;
-    }
-
-    body::selection {
-      background: #cde3db;
-      color: #0d1a25;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: var(--accent);
-    }
-
-    .skip-link {
-      position: fixed;
-      left: 16px;
-      top: 16px;
-      z-index: 20;
-      transform: translateY(-160%);
-      background: var(--surface-strong);
-      color: #fff;
-      padding: 10px 14px;
-      border-radius: 6px;
-    }
-
-    .skip-link:focus {
-      transform: translateY(0);
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      border-bottom: 1px solid rgba(217, 213, 206, 0.86);
-      background: rgba(245, 243, 239, 0.92);
-      backdrop-filter: blur(18px);
-    }
-
-    .nav {
-      width: min(var(--max), calc(100% - 40px));
-      min-height: 72px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 22px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 190px;
-      font-weight: 800;
-      letter-spacing: 0;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 6px;
-      display: grid;
-      place-items: center;
-      background: var(--brand);
-      color: #fff;
-      font-size: 0.9rem;
-      letter-spacing: 0.04em;
-    }
-
-    .brand small {
-      display: block;
-      color: var(--muted);
-      font-weight: 650;
-      font-size: 0.74rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      color: #364152;
-      font-size: 0.94rem;
-      font-weight: 700;
-    }
-
-    .nav-links a {
-      padding: 9px 11px;
-      border-radius: 6px;
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      background: #e8e3da;
-      outline: none;
-    }
-
-    .nav-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .button {
-      min-height: 42px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 10px 14px;
-      background: var(--surface);
-      color: var(--ink);
-      font-weight: 800;
-      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
-      cursor: pointer;
-    }
-
-    .button:hover {
-      border-color: #bfc6c3;
-      color: var(--ink);
-      transform: translateY(-1px);
-    }
-
-    .button--primary {
-      background: var(--brand);
-      border-color: var(--brand);
-      color: #fff;
-    }
-
-    .button--primary:hover {
-      background: #244261;
-      color: #fff;
-    }
-
-    main {
-      overflow: hidden;
-    }
-
-    .section {
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
-      padding: 82px 0;
-    }
-
-    .hero {
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
-      min-height: calc(100svh - 72px);
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 340px;
-      gap: 46px;
-      align-items: center;
-      padding: 52px 0 70px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 0 20px;
-      color: var(--accent);
-      font-size: 0.78rem;
-      font-weight: 850;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 34px;
-      height: 2px;
-      background: var(--accent);
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0;
-    }
-
-    h1 {
-      max-width: 900px;
-      margin-bottom: 24px;
-      color: #101722;
-      font-size: clamp(3.1rem, 7vw, 6.4rem);
-      line-height: 0.92;
-      letter-spacing: 0;
-    }
-
-    .hero-lede {
-      max-width: 760px;
-      margin-bottom: 30px;
-      color: #394354;
-      font-size: clamp(1.08rem, 1.7vw, 1.35rem);
-      line-height: 1.65;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 36px;
-    }
-
-    .hero-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      max-width: 780px;
-    }
-
-    .metric {
-      border-left: 3px solid var(--accent);
-      background: rgba(255, 255, 255, 0.66);
-      padding: 15px 16px;
-    }
-
-    .metric strong {
-      display: block;
-      color: var(--brand);
-      font-size: 1.5rem;
-      line-height: 1;
-    }
-
-    .metric span {
-      color: var(--muted);
-      font-size: 0.88rem;
-      font-weight: 700;
-    }
-
-    .profile-panel {
-      align-self: center;
-      display: grid;
-      justify-items: center;
-      gap: 18px;
-      position: relative;
-      isolation: isolate;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.78);
-      padding: 26px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .profile-panel::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      height: 96px;
-      background: linear-gradient(135deg, var(--brand), var(--accent));
-      z-index: -1;
-    }
-
-    .profile-panel img {
-      width: 148px;
-      height: 148px;
-      object-fit: cover;
-      object-position: center top;
-      border: 6px solid #fff;
-      border-radius: 999px;
-      box-shadow: 0 16px 34px rgba(17, 24, 39, 0.18);
-      filter: saturate(0.92) contrast(1.05);
-    }
-
-    .profile-card {
-      position: relative;
-      width: 100%;
-      color: var(--ink);
-      text-align: center;
-    }
-
-    .profile-card strong {
-      display: block;
-      font-size: 1.15rem;
-      margin-bottom: 4px;
-    }
-
-    .profile-card span {
-      color: var(--muted);
-      font-weight: 650;
-    }
-
-    .availability {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 16px;
-      color: #244b41;
-      font-size: 0.9rem;
-      font-weight: 800;
-    }
-
-    .availability::before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      background: #5bd195;
-      box-shadow: 0 0 0 5px rgba(91, 209, 149, 0.16);
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
-      gap: 38px;
-      align-items: end;
-      margin-bottom: 34px;
-      border-top: 1px solid var(--line);
-      padding-top: 28px;
-    }
-
-    .section-kicker {
-      color: var(--accent-2);
-      font-size: 0.78rem;
-      font-weight: 850;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      margin-bottom: 0;
-      color: #111827;
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      line-height: 1;
-      letter-spacing: 0;
-    }
-
-    .section-head p {
-      margin-bottom: 0;
-      color: var(--muted);
-      font-size: 1.04rem;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.78);
-      padding: 24px;
-    }
-
-    .card--dark {
-      background: var(--surface-strong);
-      border-color: var(--surface-strong);
-      color: #fff;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      color: inherit;
-      font-size: 1.1rem;
-      line-height: 1.22;
-    }
-
-    .card p {
-      margin-bottom: 0;
-      color: var(--muted);
-    }
-
-    .card--dark p {
-      color: #c9d0dc;
-    }
-
-    .role-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px;
-      color: #596273;
-      font-size: 0.88rem;
-      font-weight: 800;
-    }
-
-    .role-meta span {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 4px 9px;
-      background: #f8f7f4;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 16px;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 220px minmax(0, 1fr);
-      gap: 22px;
-      border-top: 1px solid var(--line);
-      padding-top: 22px;
-    }
-
-    .timeline-item:first-child {
-      border-top: 0;
-      padding-top: 0;
-    }
-
-    .timeline-date {
-      color: var(--accent);
-      font-weight: 850;
-    }
-
-    .timeline-body h3 {
-      margin-bottom: 8px;
-      color: #111827;
-      font-size: 1.25rem;
-    }
-
-    .timeline-body p {
-      color: #4e5868;
-    }
-
-    .list {
-      margin: 14px 0 0;
-      padding-left: 19px;
-      color: #3f4857;
-    }
-
-    .list li + li {
-      margin-top: 6px;
-    }
-
-    .stack-layout {
-      display: grid;
-      grid-template-columns: 0.72fr 1.28fr;
-      gap: 18px;
-      align-items: start;
-    }
-
-    .skill-group {
-      display: grid;
-      gap: 12px;
-    }
-
-    .skill-group h3 {
-      margin: 0;
-      color: #111827;
-      font-size: 1rem;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-    }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      min-height: 34px;
-      border: 1px solid #d5dbe0;
-      border-radius: 999px;
-      background: var(--chip);
-      color: #202938;
-      padding: 7px 11px;
-      font-size: 0.9rem;
-      font-weight: 750;
-      white-space: nowrap;
-    }
-
-    .chip--strong {
-      background: #dfede8;
-      border-color: #bdd9ce;
-      color: #17392f;
-    }
-
-    .service-card {
-      display: grid;
-      gap: 14px;
-      min-height: 100%;
-    }
-
-    .service-number {
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      border-radius: 6px;
-      background: var(--brand);
-      color: #fff;
-      font-size: 0.82rem;
-      font-weight: 850;
-    }
-
-    .fit-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .fit-list li {
-      border-left: 3px solid var(--accent);
-      background: rgba(255, 255, 255, 0.74);
-      padding: 14px 16px;
-      color: #3f4857;
-      font-weight: 700;
-    }
-
-    .level-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .level-card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #fff;
-      padding: 18px;
-    }
-
-    .level-card strong {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--brand);
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .level-card p {
-      margin: 0;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .project-card {
-      min-height: 100%;
-      display: grid;
-      gap: 16px;
-    }
-
-    .project-card .list {
-      margin-top: 0;
-    }
-
-    .project-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .project-label {
-      color: var(--accent-2);
-      font-size: 0.76rem;
-      font-weight: 850;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .status {
-      border-radius: 999px;
-      background: #e6ece9;
-      color: #235246;
-      padding: 5px 9px;
-      font-size: 0.76rem;
-      font-weight: 850;
-      white-space: nowrap;
-    }
-
-    .education {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .edu-item {
-      border-top: 3px solid var(--brand);
-      background: var(--surface);
-      padding: 18px;
-    }
-
-    .edu-item strong {
-      display: block;
-      margin-bottom: 4px;
-      color: #111827;
-    }
-
-    .edu-item span {
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .contact-band {
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto 42px;
-      display: grid;
-      grid-template-columns: minmax(0, 0.95fr) minmax(300px, 0.45fr);
-      gap: 30px;
-      align-items: center;
-      border-radius: var(--radius);
-      background: var(--surface-strong);
-      color: #fff;
-      padding: 36px;
-      box-shadow: var(--shadow);
-    }
-
-    .contact-band h2 {
-      color: #fff;
-      margin-bottom: 14px;
-    }
-
-    .contact-band p {
-      margin-bottom: 0;
-      color: #ccd3df;
-      font-size: 1.05rem;
-    }
-
-    .contact-links {
-      display: grid;
-      gap: 10px;
-    }
-
-    .contact-link {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      border: 1px solid var(--line-dark);
-      border-radius: 6px;
-      padding: 12px 14px;
-      color: #fff;
-      font-weight: 800;
-    }
-
-    .contact-link span {
-      color: #aeb7c6;
-      font-weight: 700;
-    }
-
-    .site-footer {
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
-      padding: 0 0 34px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      color: #6a7280;
-      font-size: 0.92rem;
-      font-weight: 700;
-    }
-
-    @media (max-width: 980px) {
-      .nav {
-        flex-wrap: wrap;
-        padding: 14px 0;
-      }
-
-      .nav-links {
-        order: 3;
-        width: 100%;
-        overflow-x: auto;
-        padding-bottom: 4px;
-      }
-
-      .hero,
-      .section-head,
-      .stack-layout,
-      .contact-band {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-        padding-top: 44px;
-      }
-
-      .grid-3,
-      .grid-2,
-      .fit-list,
-      .level-grid,
-      .education {
-        grid-template-columns: 1fr;
-      }
-
-      .timeline-item {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav,
-      .section,
-      .hero,
-      .contact-band,
-      .site-footer {
-        width: min(100% - 28px, var(--max));
-      }
-
-      .nav-actions {
-        width: 100%;
-      }
-
-      .nav-actions .button {
-        flex: 1;
-      }
-
-      h1 {
-        font-size: clamp(2.6rem, 17vw, 4.4rem);
-      }
-
-      .hero-metrics {
-        grid-template-columns: 1fr;
-      }
-
-      .section {
-        padding: 56px 0;
-      }
-
-      .card,
-      .contact-band {
-        padding: 22px;
-      }
-
-      .site-footer {
-        display: grid;
-      }
-    }
-  </style>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d1726'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='28' fill='%23f6f3ec'%3EJB%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="./portfolio.css">
+  <script src="./portfolio.js" defer></script>
 </head>
-
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="progress" aria-hidden="true"><span></span></div>
 
   <header class="site-header">
-    <nav class="nav" aria-label="Navegacion principal">
-      <a class="brand" href="#inicio" aria-label="Volver al inicio">
+    <nav class="nav shell" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
         <span class="brand-mark" aria-hidden="true">JB</span>
-        <span>Jose Burguillos <small>Node.js &middot; Angular</small></span>
+        <span class="brand-name">José Burguillos</span>
       </a>
-
-      <div class="nav-links" aria-label="Secciones">
-        <a href="#perfil">Perfil</a>
-        <a href="#aportacion">Aportacion</a>
+      <div class="nav-links" id="nav-links">
+        <a href="#sobre-mi">Sobre mí</a>
         <a href="#experiencia">Experiencia</a>
-        <a href="#stack">Stack</a>
         <a href="#proyectos">Proyectos</a>
+        <a href="#competencias">Competencias</a>
         <a href="#contacto">Contacto</a>
+        <a class="nav-links-cv" href="./CV_Jose_Burguillos.pdf" download>Descargar CV</a>
       </div>
-
-      <div class="nav-actions">
-        <a class="button" href="https://github.com/JoseBurguillos" target="_blank" rel="noreferrer" aria-label="Abrir GitHub">GitHub</a>
-        <a class="button button--primary" href="mailto:joseab078@gmail.com" aria-label="Enviar email">Email</a>
-      </div>
+      <a class="nav-cta" href="./CV_Jose_Burguillos.pdf" download>CV <span aria-hidden="true">↓</span></a>
+      <button class="menu-button" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
     </nav>
   </header>
 
   <main id="contenido">
+    <!-- Hero -->
     <section class="hero" id="inicio" aria-labelledby="hero-title">
-      <div>
-        <p class="eyebrow">Node.js · Angular · Soporte IT</p>
-        <h1 id="hero-title">Jose Burguillos</h1>
-        <p class="hero-lede">
-          Desarrollador Web Full Stack enfocado en Node.js y Angular: backend, interfaces
-          y APIs REST para conectar aplicaciones de principio a fin. Complemento esta
-          especialización con experiencia en soporte IT, sistemas y redes, además de Laravel, React, bases de datos, IA y automatización con n8n.
-        </p>
-        <div class="hero-actions">
-          <a class="button button--primary" href="mailto:joseab078@gmail.com">Contactar</a>
-          <a class="button" href="https://www.linkedin.com/in/jos%C3%A9-burguillos-88834932a/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="button" href="https://calendar.app.google/XLdZw3HhWRP7AxGh8" target="_blank" rel="noreferrer">Agendar llamada</a>
-        </div>
-
-        <div class="hero-metrics" aria-label="Resumen profesional">
-          <div class="metric">
-            <strong>Node.js</strong>
-            <span>Backend y APIs REST</span>
-          </div>
-          <div class="metric">
-            <strong>Angular</strong>
-            <span>Frontend con TypeScript</span>
-          </div>
-          <div class="metric">
-            <strong>Soporte IT</strong>
-            <span>Helpdesk, sistemas y redes</span>
-          </div>
-        </div>
-      </div>
-
-      <aside class="profile-panel" aria-label="Foto de perfil y estado profesional">
-        <img src="./imagen linkedin.png" alt="Foto de perfil profesional de Jose Burguillos">
-        <div class="profile-card">
-          <strong>Desarrollo Web y Soporte IT</strong>
-          <span>Node.js &middot; Angular &middot; TypeScript<br>Helpdesk &middot; Windows &middot; Redes</span>
-          <div class="availability">Disponible para desarrollo junior y soporte IT</div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="section" id="perfil" aria-labelledby="perfil-title">
-      <div class="section-head">
-        <div>
-          <span class="section-kicker">01 / Perfil</span>
-          <h2 id="perfil-title">Especialización web, base técnica amplia.</h2>
-        </div>
-        <p>
-          Mi objetivo es crecer como desarrollador Full Stack especializado en Node.js y Angular,
-          y aportar como técnico de soporte IT y sistemas. Combino desarrollo de aplicaciones, resolución de incidencias y atención a usuarios.
-        </p>
-      </div>
-
-      <div class="grid-3">
-        <article class="card card--dark">
-          <h3>Node.js y Angular</h3>
-          <p>Centro mi especialización en el backend con Node.js y el frontend con Angular, conectados mediante APIs REST y una separación clara de responsabilidades.</p>
-        </article>
-        <article class="card">
-          <h3>Soporte IT y sistemas</h3>
-          <p>Experiencia en incidencias de hardware y software, mantenimiento de equipos y redes, helpdesk y atención telefónica a usuarios y clientes.</p>
-        </article>
-        <article class="card">
-          <h3>Automatizacion e IA</h3>
-          <p>Experiencia practica con Gemini API, asistentes basados en IA, prompt engineering y flujos automatizados con n8n.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="aportacion" aria-labelledby="aportacion-title">
-      <div class="section-head">
-        <div>
-          <span class="section-kicker">02 / Aportacion</span>
-          <h2 id="aportacion-title">Que puedo aportar a un equipo tecnico.</h2>
-        </div>
-        <p>
-          Un perfil junior centrado en Node.js y Angular, con conocimientos complementarios
-          en otros stacks y soporte IT para entender el código, los usuarios y el entorno de la aplicación.
-        </p>
-      </div>
-
-      <div class="grid-3">
-        <article class="card service-card">
-          <span class="service-number">01</span>
-          <h3>Frontend con Angular</h3>
-          <p>Interfaces con Angular y TypeScript, componentes reutilizables, consumo de APIs y formularios. También cuento con conocimientos de React, HTML, CSS, Tailwind CSS y Sass.</p>
-        </article>
-        <article class="card service-card">
-          <span class="service-number">02</span>
-          <h3>Backend con Node.js</h3>
-          <p>Backend con foco en Node.js, APIs REST, validación de datos y comunicación cliente-servidor. Complemento este enfoque con Laravel, PHP y bases de datos SQL y MongoDB.</p>
-        </article>
-        <article class="card service-card">
-          <span class="service-number">03</span>
-          <h3>Automatizacion con IA</h3>
-          <p>Integracion de Gemini API, automatizaciones con n8n, asistentes internos y flujos conectados por servicios externos.</p>
-        </article>
-        <article class="card service-card">
-          <span class="service-number">04</span>
-          <h3>Soporte IT y usuarios</h3>
-          <p>Resolución de incidencias de hardware y software, soporte telefónico y remoto, mantenimiento de equipos y redes. Conocimientos de Windows 10/11, Windows Server, Active Directory y Microsoft 365.</p>
-        </article>
-        <article class="card service-card">
-          <span class="service-number">05</span>
-          <h3>Trabajo en producto</h3>
-          <p>Capacidad para transformar necesidades en funcionalidades, priorizar claridad y entregar soluciones mantenibles.</p>
-        </article>
-        <article class="card service-card">
-          <span class="service-number">06</span>
-          <h3>Aprendizaje acelerado</h3>
-          <p>Perfil en crecimiento, constante y adaptable, con interes en arquitectura, escalabilidad, IA y mejora continua.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="experiencia" aria-labelledby="experiencia-title">
-      <div class="section-head">
-        <div>
-          <span class="section-kicker">03 / Experiencia</span>
-          <h2 id="experiencia-title">Entornos reales, codigo mantenible y soporte tecnico.</h2>
-        </div>
-        <p>
-          Experiencia previa combinada en desarrollo full stack y soporte IT, una base util para entender
-          software, usuarios, incidencias e infraestructura.
-        </p>
-      </div>
-
-      <div class="timeline">
-        <article class="timeline-item">
-          <div class="timeline-date">2024 &middot; 4 meses</div>
-          <div class="timeline-body">
-            <div class="role-meta">
-              <span>Programador Full Stack</span>
-              <span>Deuser &middot; Indra Group</span>
-            </div>
-            <h3>Desarrollo full stack en aplicaciones empresariales</h3>
-            <p>
-              Refuerzo de conocimientos en C#, React, Angular y MongoDB, participando en tareas de
-              desarrollo full stack, integracion cliente-servidor y mantenimiento de aplicaciones.
-            </p>
-            <ul class="list">
-              <li>Desarrollo de funcionalidades frontend y backend.</li>
-              <li>Integracion de servicios y trabajo sobre aplicaciones existentes.</li>
-              <li>Colaboracion en entorno profesional con metodologias de equipo.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="timeline-item">
-          <div class="timeline-date">Marzo - junio 2024 &middot; 3 meses</div>
-          <div class="timeline-body">
-            <div class="role-meta">
-              <span>Tecnico de Soporte IT</span>
-              <span>Recosur</span>
-            </div>
-            <h3>Soporte, incidencias e infraestructura</h3>
-            <p>
-              Mantenimiento de infraestructura de red y equipos en entorno corporativo, resolución de
-              incidencias de hardware y software, instalación de programas y configuración básica de sistemas.
-            </p>
-            <ul class="list">
-              <li>Helpdesk, registro y seguimiento de incidencias con herramientas de gestión.</li>
-              <li>Mantenimiento, instalacion de hardware y software.</li>
-              <li>Soporte telefónico a clientes y usuarios en entorno de call center.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="empresa" aria-labelledby="empresa-title">
-      <div class="section-head">
-        <div>
-          <span class="section-kicker">04 / Perfil para empresa</span>
-          <h2 id="empresa-title">Encaje para entornos corporativos y equipos grandes.</h2>
-        </div>
-        <p>
-          Busco aportar en equipos de desarrollo con Node.js y Angular o de soporte IT y sistemas,
-          combinando capacidad técnica, empatía y comunicación clara con usuarios y clientes.
-        </p>
-      </div>
-
-      <ul class="fit-list">
-        <li>Experiencia previa en desarrollo full stack sobre aplicaciones empresariales.</li>
-        <li>Base mixta en desarrollo web, sistemas microinformaticos y soporte IT.</li>
-        <li>Capacidad para entender incidencias desde el punto de vista tecnico y de usuario.</li>
-        <li>Interes real en producto, arquitectura, automatizacion e inteligencia artificial.</li>
-        <li>Orientación a desarrollo con Angular y Node.js, soporte IT, helpdesk y sistemas.</li>
-        <li>Actitud de mejora continua, aprendizaje constante y comunicacion clara.</li>
-      </ul>
-    </section>
-
-    <section class="section" id="stack" aria-labelledby="stack-title">
-      <div class="section-head">
-        <div>
-          <span class="section-kicker">05 / Stack</span>
-          <h2 id="stack-title">Desarrollo web y soporte IT.</h2>
-        </div>
-        <p>
-          Mi especialización se centra en Node.js y Angular, apoyada en JavaScript, TypeScript
-          y APIs REST. Mi perfil de soporte IT abarca helpdesk, Windows, redes y asistencia remota,
-          junto con conocimientos complementarios de otros frameworks, datos e IA.
-        </p>
-      </div>
-
-      <div class="stack-layout">
-        <article class="card">
-          <h3>Stack principal</h3>
-          <p>
-            Node.js y Angular, con TypeScript, JavaScript ES6+ y APIs REST como base
-            para el desarrollo Full Stack. SQL, PostgreSQL, MySQL, MongoDB, Git y Docker
-            completan el trabajo con datos y herramientas.
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-grid shell">
+        <div class="hero-copy">
+          <p class="status intro" style="--i:0"><span class="status-dot" aria-hidden="true"></span>Disponible · presencial, híbrido o remoto</p>
+          <h1 id="hero-title" class="hero-name intro" style="--i:1">
+            <span class="line"><span>José</span></span>
+            <span class="line"><span><em>Burguillos</em></span></span>
+          </h1>
+          <p class="hero-role intro" style="--i:2">
+            <span class="hero-role-label">Hoy trabajo en</span>
+            <span class="rotator" aria-live="polite"><span class="rotator-word">desarrollo web</span></span>
           </p>
-        </article>
-
-        <div class="card skill-group">
-          <div class="level-grid">
-            <div class="level-card">
-              <strong>Especialización</strong>
-              <p>Node.js, Angular, TypeScript, JavaScript y APIs REST.</p>
-            </div>
-            <div class="level-card">
-              <strong>Complementario</strong>
-              <p>Laravel 11, PHP 8+, React, C#, SQL, MongoDB, Docker, n8n y Gemini API.</p>
-            </div>
-            <div class="level-card">
-              <strong>Soporte IT</strong>
-              <p>Windows 10/11, Windows Server, Active Directory, Microsoft 365, redes y helpdesk.</p>
-            </div>
+          <p class="hero-lede intro" style="--i:3">Soy desarrollador web junior con base en sistemas y redes. Construyo aplicaciones con <strong>Angular, Node.js y C#</strong>, automatizo procesos con <strong>n8n e IA</strong> y sé lo que pasa cuando el software llega a usuarios reales.</p>
+          <div class="hero-actions intro" style="--i:4">
+            <a class="button button--solid magnetic" href="#proyectos">Ver proyectos <span aria-hidden="true">→</span></a>
+            <a class="button button--ghost magnetic" href="./CV_Jose_Burguillos.pdf" download>Descargar CV</a>
           </div>
+        </div>
 
-          <h3>Desarrollo frontend</h3>
-          <div class="chips">
-            <span class="chip chip--strong">Angular</span>
-            <span class="chip">React</span>
-            <span class="chip chip--strong">TypeScript</span>
-            <span class="chip">JavaScript ES6+</span>
-            <span class="chip">HTML5</span>
-            <span class="chip">CSS3</span>
-            <span class="chip">Tailwind CSS</span>
-            <span class="chip">Sass</span>
-            <span class="chip">Figma</span>
-            <span class="chip">Frontend</span>
+        <figure class="portrait intro" style="--i:2">
+          <div class="portrait-orbit" aria-hidden="true">
+            <svg viewBox="0 0 400 400"><circle cx="200" cy="200" r="190"/><circle cx="200" cy="200" r="160"/></svg>
           </div>
+          <div class="portrait-frame">
+            <img src="./imagen linkedin.png" alt="Retrato de José Burguillos" width="200" height="200">
+          </div>
+          <span class="chip chip--1" aria-hidden="true">Angular 21</span>
+          <span class="chip chip--2" aria-hidden="true">Node.js</span>
+          <span class="chip chip--3" aria-hidden="true">Python</span>
+          <span class="chip chip--4" aria-hidden="true">n8n</span>
+          <span class="chip chip--5" aria-hidden="true">APIs e IA</span>
+          <figcaption class="portrait-caption"><span>Lucena, Córdoba</span><span>37.42° N · 4.48° W</span></figcaption>
+        </figure>
+      </div>
 
-          <h3>Backend, bases de datos y APIs</h3>
-          <div class="chips">
-            <span class="chip chip--strong">Node.js</span>
-            <span class="chip">Laravel</span>
-            <span class="chip">PHP</span>
-            <span class="chip">Spring Boot</span>
-            <span class="chip">C#</span>
-            <span class="chip">Java</span>
-            <span class="chip">Python</span>
-            <span class="chip">REST</span>
-            <span class="chip">RESTful API</span>
-            <span class="chip">API development</span>
-            <span class="chip">JWT</span>
-            <span class="chip">MVC</span>
-            <span class="chip">SQL</span>
-            <span class="chip">MySQL</span>
-            <span class="chip">PostgreSQL</span>
-            <span class="chip">MongoDB</span>
-          </div>
+      <dl class="stats shell intro" style="--i:5">
+        <div class="stat"><dt>Meses de prácticas</dt><dd><span class="count" data-to="7">7</span></dd></div>
+        <div class="stat"><dt>Nodos en mi mayor flujo n8n</dt><dd><span class="count" data-to="50">50</span>+</dd></div>
+        <div class="stat"><dt>Proyectos completos</dt><dd><span class="count" data-to="3">3</span></dd></div>
+        <div class="stat"><dt>Titulaciones técnicas</dt><dd><span class="count" data-to="2">2</span></dd></div>
+      </dl>
+    </section>
 
-          <h3>Soporte IT, sistemas y herramientas</h3>
-          <div class="chips">
-            <span class="chip">Windows 10/11</span>
-            <span class="chip">Windows Server</span>
-            <span class="chip">Active Directory</span>
-            <span class="chip">Microsoft 365</span>
-            <span class="chip">Microsoft Office</span>
-            <span class="chip">Outlook</span>
-            <span class="chip">Microsoft Teams</span>
-            <span class="chip">AnyDesk</span>
-            <span class="chip">TeamViewer</span>
-            <span class="chip">VirtualBox</span>
-            <span class="chip">Cisco Packet Tracer</span>
-            <span class="chip">LAN / Wi-Fi</span>
-            <span class="chip">Microsoft Defender</span>
-            <span class="chip">Copias de seguridad</span>
-            <span class="chip">Recuperación del sistema</span>
-            <span class="chip">Clonezilla</span>
-            <span class="chip">Hardware y periféricos</span>
-            <span class="chip">Controladores</span>
-            <span class="chip">Seguimiento de incidencias</span>
-            <span class="chip">VS Code</span>
-            <span class="chip">Git</span>
-            <span class="chip">GitHub</span>
-            <span class="chip">Docker</span>
-            <span class="chip">Postman</span>
-            <span class="chip">Linux</span>
-            <span class="chip">Administracion de sistemas</span>
-            <span class="chip">Administracion de sistemas Linux</span>
-            <span class="chip">Sistemas informaticos</span>
-            <span class="chip">Virtualizacion</span>
-            <span class="chip">IT Service Management</span>
-            <span class="chip">Helpdesk</span>
-            <span class="chip">Soporte tecnico</span>
-            <span class="chip">Soporte informatico a clientes</span>
-            <span class="chip">Asistencia tecnica</span>
-            <span class="chip">Atencion telefonica</span>
-            <span class="chip">Incidencias</span>
-            <span class="chip">Instalacion de hardware</span>
-            <span class="chip">Mantenimiento</span>
-            <span class="chip">Scrum</span>
-          </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Angular</span><span>Node.js</span><span>TypeScript</span><span>C#</span><span>APIs REST</span><span>n8n</span><span>Ollama</span><span>Cloudflare Workers</span><span>MongoDB</span><span>Docker</span><span>Active Directory</span><span>Microsoft 365</span>
+        <span>Angular</span><span>Node.js</span><span>TypeScript</span><span>C#</span><span>APIs REST</span><span>n8n</span><span>Ollama</span><span>Cloudflare Workers</span><span>MongoDB</span><span>Docker</span><span>Active Directory</span><span>Microsoft 365</span>
+      </div>
+    </div>
 
-          <h3>IA, automatizacion y producto</h3>
-          <div class="chips">
-            <span class="chip chip--strong">Gemini API</span>
-            <span class="chip chip--strong">n8n</span>
-            <span class="chip">Automatizacion de procesos</span>
-            <span class="chip">Asistentes con IA</span>
-            <span class="chip">Prompt engineering</span>
-            <span class="chip">Integracion por APIs</span>
-            <span class="chip">Software</span>
+    <!-- Sobre mí -->
+    <section class="section shell" id="sobre-mi" aria-labelledby="sobre-title">
+      <header class="section-head reveal">
+        <span class="section-index">01</span>
+        <span class="section-kicker">Sobre mí</span>
+      </header>
+      <div class="about">
+        <div class="about-main">
+          <h2 id="sobre-title" class="statement reveal">Empecé arreglando equipos y redes. Ahora construyo el software que corre en ellos, <em>sin olvidar a quien lo usa.</em></h2>
+          <div class="about-text reveal">
+            <p>Me formé primero en <strong>Sistemas Microinformáticos y Redes</strong> y después en <strong>Desarrollo de Aplicaciones Web</strong>, en modalidad bilingüe en el IES Trassierra. Esa mezcla me da una forma de trabajar concreta: pienso en la arquitectura cuando escribo código y en las personas cuando resuelvo una incidencia.</p>
+            <p>He pasado por soporte IT en Recosur y por desarrollo en Deuser / Indra Group. Fuera de las prácticas, experimento con automatización, modelos locales con Ollama y servicios serverless.</p>
           </div>
+        </div>
+        <aside class="facts reveal" aria-label="Datos rápidos">
+          <dl>
+            <div><dt>Base</dt><dd>Lucena, Córdoba</dd></div>
+            <div><dt>Modalidad</dt><dd>Presencial, híbrido o remoto</dd></div>
+            <div><dt>Movilidad</dt><dd>Disponible para desplazarme</dd></div>
+            <div><dt>Idiomas</dt><dd>Español nativo · Inglés B1 · Francés A2</dd></div>
+          </dl>
+        </aside>
+      </div>
+
+      <div class="modes reveal">
+        <div class="mode-switcher" role="tablist" aria-label="Perfiles profesionales">
+          <span class="mode-indicator" aria-hidden="true"></span>
+          <button class="mode-button" type="button" role="tab" id="tab-dev" aria-selected="true" aria-controls="panel-dev">Desarrollo</button>
+          <button class="mode-button" type="button" role="tab" id="tab-support" aria-selected="false" aria-controls="panel-support" tabindex="-1">Soporte IT</button>
+        </div>
+        <div class="mode-panel is-visible" id="panel-dev" role="tabpanel" aria-labelledby="tab-dev">
+          <article class="capability"><span>01</span><h3>Frontend</h3><p>Angular, React y TypeScript. Componentes reutilizables, formularios y consumo de APIs.</p></article>
+          <article class="capability"><span>02</span><h3>Backend</h3><p>Node.js, Express y C#. APIs REST, endpoints y autenticación con JWT.</p></article>
+          <article class="capability"><span>03</span><h3>Datos</h3><p>MongoDB, PostgreSQL, MySQL y SQLite, con Git, Docker y Postman en el día a día.</p></article>
+          <article class="capability"><span>04</span><h3>Automatización e IA</h3><p>Flujos con n8n, modelos locales con Ollama, APIs de IA y Cloudflare Workers.</p></article>
+        </div>
+        <div class="mode-panel" id="panel-support" role="tabpanel" aria-labelledby="tab-support" hidden>
+          <article class="capability"><span>01</span><h3>Helpdesk</h3><p>Soporte telefónico y remoto con AnyDesk y TeamViewer, registro y seguimiento de incidencias.</p></article>
+          <article class="capability"><span>02</span><h3>Sistemas</h3><p>Windows 10/11, Windows Server, Active Directory y Microsoft 365. Conocimientos de Linux.</p></article>
+          <article class="capability"><span>03</span><h3>Redes</h3><p>LAN y Wi-Fi, configuración básica, VirtualBox y Cisco Packet Tracer.</p></article>
+          <article class="capability"><span>04</span><h3>Mantenimiento</h3><p>Hardware, periféricos, controladores, copias de seguridad y clonado con Clonezilla.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="proyectos" aria-labelledby="proyectos-title">
-      <div class="section-head">
-        <div>
-          <span class="section-kicker">06 / Proyectos</span>
-          <h2 id="proyectos-title">Proyectos y líneas de trabajo.</h2>
-        </div>
-        <p>
-          Proyectos de desarrollo incluidos en mi CV y experiencia práctica en soporte IT.
-          ADOPT-ME y el sistema de fichaje cuentan con repositorios; también muestro mis áreas de trabajo en APIs, interfaces y automatización.
-        </p>
+    <!-- Experiencia -->
+    <section class="section section--tint" id="experiencia" aria-labelledby="experiencia-title">
+      <div class="shell">
+        <header class="section-head reveal">
+          <span class="section-index">02</span>
+          <span class="section-kicker">Experiencia</span>
+        </header>
+        <h2 id="experiencia-title" class="section-title reveal">Dos entornos, el mismo <em>rigor.</em></h2>
+        <ol class="timeline">
+          <li class="timeline-line" aria-hidden="true"><span></span></li>
+          <li class="role reveal">
+            <div class="role-when"><span>2024</span><small>4 meses</small></div>
+            <div class="role-body">
+              <span class="role-company">Deuser · Indra Group</span>
+              <h3>Programador web en prácticas</h3>
+              <ul class="role-points">
+                <li>Desarrollo y mantenimiento de aplicaciones con C#, Angular, Node.js y React.</li>
+                <li>Creación de APIs y endpoints, e integración de aplicaciones con APIs.</li>
+                <li>Trabajo con MongoDB, Git y Docker en los proyectos del equipo.</li>
+              </ul>
+              <ul class="tags"><li>C#</li><li>Angular</li><li>Node.js</li><li>React</li><li>MongoDB</li><li>Docker</li></ul>
+            </div>
+          </li>
+          <li class="role reveal">
+            <div class="role-when"><span>Mar – Jun 2024</span><small>3 meses</small></div>
+            <div class="role-body">
+              <span class="role-company">Recosur</span>
+              <h3>Técnico IT en prácticas</h3>
+              <ul class="role-points">
+                <li>Resolución de incidencias de hardware y software, mantenimiento de equipos y redes.</li>
+                <li>Soporte telefónico a clientes y usuarios, con registro y seguimiento mediante procedimientos de helpdesk.</li>
+                <li>Instalación de software, configuración de equipos y redes, y uso de Active Directory.</li>
+              </ul>
+              <ul class="tags"><li>Helpdesk</li><li>Hardware</li><li>Redes</li><li>Active Directory</li><li>Atención al usuario</li></ul>
+            </div>
+          </li>
+        </ol>
       </div>
+    </section>
 
-      <div class="grid-3">
-        <article class="card project-card">
-          <div class="project-top">
-            <span class="project-label">Angular + Node.js</span>
-            <span class="status">TFG · 2026</span>
+    <!-- Proyectos -->
+    <section class="section shell" id="proyectos" aria-labelledby="proyectos-title">
+      <header class="section-head reveal">
+        <span class="section-index">03</span>
+        <span class="section-kicker">Proyectos</span>
+      </header>
+      <h2 id="proyectos-title" class="section-title reveal">Lo que he construido <em>de principio a fin.</em></h2>
+
+      <div class="projects">
+        <article class="project project--feature spot reveal">
+          <div class="project-info">
+            <div class="project-meta"><span>Prototipo funcional</span><span>Automatización · IA</span></div>
+            <h3>Asistente inteligente para empresas de reformas</h3>
+            <p>Atiende solicitudes por WhatsApp con IA, mantiene el contexto de la conversación y valida los datos del cliente. Guarda la documentación en Google Drive, genera bocetos con FLUX y ofrece un panel para gestionar solicitudes, visitas y presupuestos.</p>
+            <ul class="tags"><li>n8n · 50+ nodos</li><li>Node.js</li><li>Express</li><li>Angular</li><li>SQLite</li><li>WhatsApp Cloud API</li><li>JWT</li></ul>
           </div>
+          <div class="flow" aria-hidden="true">
+            <div class="flow-node"><b>WhatsApp</b><small>mensaje entrante</small></div>
+            <div class="flow-node"><b>n8n</b><small>orquestación</small></div>
+            <div class="flow-node flow-node--accent"><b>IA</b><small>contexto y validación</small></div>
+            <div class="flow-node"><b>Drive · FLUX</b><small>documentos y bocetos</small></div>
+            <div class="flow-node"><b>Panel</b><small>visitas y presupuestos</small></div>
+          </div>
+        </article>
+
+        <article class="project spot reveal">
+          <div class="project-meta"><span>TFG · 2026</span><span>Full stack</span></div>
           <h3>ADOPT-ME</h3>
-          <p>Plataforma web de adopción responsable desarrollada como proyecto de fin de grado.</p>
-          <ul class="list">
-            <li>Catálogo de animales, solicitudes y favoritos.</li>
-            <li>Mensajería y panel de administración.</li>
-            <li>Stack con JWT, Cloudinary y Stripe.</li>
-          </ul>
-          <div class="chips">
-            <span class="chip chip--strong">Angular 21</span>
-            <span class="chip chip--strong">Node.js</span>
-            <span class="chip">TypeScript</span>
-            <span class="chip">Express</span>
-            <span class="chip">MongoDB</span>
-          </div>
-          <a class="button" href="https://github.com/JoseBurguillos/TFG-adoptme" target="_blank" rel="noreferrer">Ver ADOPT-ME en GitHub</a>
+          <p>Plataforma de adopción con catálogo, solicitudes, favoritos, mensajería y panel de administración. Pagos con Stripe e imágenes en Cloudinary.</p>
+          <ul class="tags"><li>Angular</li><li>TypeScript</li><li>Node.js</li><li>MongoDB</li><li>Stripe</li></ul>
+          <a class="project-link" href="https://github.com/JoseBurguillos/TFG-adoptme" target="_blank" rel="noreferrer">Ver repositorio <span aria-hidden="true">↗</span></a>
         </article>
 
-        <article class="card project-card">
-          <div class="project-top">
-            <span class="project-label">Angular + Python</span>
-            <span class="status">Personal · 2026</span>
-          </div>
-          <h3>Sistema de fichaje de empleados</h3>
-          <p>Aplicación web para registrar entradas y salidas de empleados.</p>
-          <ul class="list">
-            <li>Autenticación por token y geolocalización.</li>
-            <li>Historial personal de fichajes.</li>
-            <li>Panel de administración.</li>
-          </ul>
-          <div class="chips">
-            <span class="chip chip--strong">Angular</span>
-            <span class="chip">Python</span>
-            <span class="chip">SQLite</span>
-          </div>
-          <a class="button" href="https://github.com/JoseBurguillos/ProgramaFichajeEmpresa" target="_blank" rel="noreferrer">Ver sistema de fichaje en GitHub</a>
-        </article>
-
-        <article class="card project-card">
-          <div class="project-top">
-            <span class="project-label">Automatizacion</span>
-            <span class="status">IA</span>
-          </div>
-          <h3>Flujos con n8n, Gemini y APIs</h3>
-          <p>Automatizaciones para conectar servicios, transformar informacion y reducir tareas repetitivas con apoyo de IA generativa.</p>
-          <ul class="list">
-            <li>Integracion de servicios externos mediante APIs REST.</li>
-            <li>Generacion o clasificacion de contenido con Gemini API.</li>
-            <li>Automatizacion de tareas operativas con n8n.</li>
-          </ul>
-          <div class="chips">
-            <span class="chip">Gemini API</span>
-            <span class="chip">n8n</span>
-            <span class="chip">REST</span>
-          </div>
-        </article>
-
-        <article class="card project-card">
-          <div class="project-top">
-            <span class="project-label">Backend</span>
-            <span class="status">API</span>
-          </div>
-          <h3>API REST y base de datos</h3>
-          <p>Proyecto orientado a demostrar logica de negocio, modelos de datos, endpoints, validaciones y persistencia.</p>
-          <ul class="list">
-            <li>Endpoints organizados para operaciones CRUD.</li>
-            <li>Validacion de datos, relaciones y consultas SQL.</li>
-            <li>Estructura preparada para autenticacion y roles.</li>
-          </ul>
-          <div class="chips">
-            <span class="chip">Laravel</span>
-            <span class="chip">PHP</span>
-            <span class="chip">MySQL</span>
-          </div>
-        </article>
-
-        <article class="card project-card">
-          <div class="project-top">
-            <span class="project-label">Soporte IT</span>
-            <span class="status">Sistemas</span>
-          </div>
-          <h3>Gestion de incidencias y soporte</h3>
-          <p>Experiencia en Recosur: mantenimiento de equipos y redes, resolución de incidencias y atención telefónica a clientes y usuarios.</p>
-          <ul class="list">
-            <li>Diagnostico de incidencias de hardware, software y red.</li>
-            <li>Soporte a usuarios y documentacion de soluciones.</li>
-            <li>Configuracion basica de equipos e infraestructura.</li>
-          </ul>
-          <div class="chips">
-            <span class="chip">Helpdesk</span>
-            <span class="chip">Linux</span>
-            <span class="chip">IT Service</span>
-          </div>
-        </article>
-
-        <article class="card project-card">
-          <div class="project-top">
-            <span class="project-label">Repositorio</span>
-            <span class="status">Codigo</span>
-          </div>
-          <h3>GitHub profesional</h3>
-          <p>Acceso directo al perfil de GitHub para consultar estructura de proyectos, evolucion tecnica y codigo publicado.</p>
-          <div class="hero-actions">
-            <a class="button" href="https://github.com/JoseBurguillos" target="_blank" rel="noreferrer">Ver GitHub</a>
-          </div>
+        <article class="project spot reveal">
+          <div class="project-meta"><span>Personal · 2026</span><span>Full stack</span></div>
+          <h3>Sistema de fichaje</h3>
+          <p>Registro de entradas y salidas con autenticación por token, geolocalización, historial personal y panel de administración.</p>
+          <ul class="tags"><li>Angular</li><li>Python</li><li>SQLite</li></ul>
+          <a class="project-link" href="https://github.com/JoseBurguillos/ProgramaFichajeEmpresa" target="_blank" rel="noreferrer">Ver repositorio <span aria-hidden="true">↗</span></a>
         </article>
       </div>
     </section>
 
-    <section class="section" id="formacion" aria-labelledby="formacion-title">
-      <div class="section-head">
-        <div>
-          <span class="section-kicker">07 / Formacion</span>
-          <h2 id="formacion-title">Base tecnica y aprendizaje continuo.</h2>
+    <!-- Competencias -->
+    <section class="section section--tint" id="competencias" aria-labelledby="competencias-title">
+      <div class="shell">
+        <header class="section-head reveal">
+          <span class="section-index">04</span>
+          <span class="section-kicker">Competencias</span>
+        </header>
+        <h2 id="competencias-title" class="section-title reveal">Herramientas que <em>uso de verdad.</em></h2>
+        <div class="skills">
+          <article class="skill-group reveal"><h3>Desarrollo web</h3><ul class="tags"><li>Angular</li><li>React</li><li>TypeScript</li><li>JavaScript</li><li>HTML5</li><li>CSS3</li><li>Node.js</li><li>Express</li><li>C#</li><li>Python</li><li>APIs REST</li><li>JWT</li></ul></article>
+          <article class="skill-group reveal"><h3>Automatización, IA y cloud</h3><ul class="tags"><li>n8n</li><li>Ollama</li><li>APIs de IA</li><li>WhatsApp Cloud API</li><li>FLUX</li><li>Cloudflare Workers</li></ul></article>
+          <article class="skill-group reveal"><h3>Bases de datos y herramientas</h3><ul class="tags"><li>MongoDB</li><li>SQL</li><li>PostgreSQL</li><li>MySQL</li><li>SQLite</li><li>Git</li><li>GitHub</li><li>Docker</li><li>Postman</li></ul></article>
+          <article class="skill-group reveal"><h3>Soporte y sistemas</h3><ul class="tags"><li>Helpdesk</li><li>Hardware</li><li>Windows 10/11</li><li>Windows Server</li><li>Active Directory</li><li>Microsoft 365</li><li>Outlook</li><li>Teams</li><li>AnyDesk</li><li>TeamViewer</li><li>Linux</li></ul></article>
+          <article class="skill-group reveal"><h3>Redes y mantenimiento</h3><ul class="tags"><li>LAN / Wi-Fi</li><li>Configuración de redes</li><li>VirtualBox</li><li>Cisco Packet Tracer</li><li>Copias de seguridad</li><li>Clonezilla</li><li>Controladores</li></ul></article>
         </div>
-        <p>Formacion reglada en sistemas y desarrollo web, complementada con practica en herramientas actuales.</p>
       </div>
+    </section>
 
+    <!-- Formación -->
+    <section class="section shell" id="formacion" aria-labelledby="formacion-title">
+      <header class="section-head reveal">
+        <span class="section-index">05</span>
+        <span class="section-kicker">Formación</span>
+      </header>
+      <h2 id="formacion-title" class="section-title reveal">Sistemas primero, <em>desarrollo después.</em></h2>
       <div class="education">
-        <div class="edu-item">
-          <strong>DAW</strong>
-          <span>IES Trassierra &middot; 2024 - 2026</span>
-        </div>
-        <div class="edu-item">
-          <strong>SMR</strong>
-          <span>IES Marques de Comares &middot; 2022 - 2024</span>
-        </div>
-        <div class="edu-item">
-          <strong>Idiomas</strong>
-          <span>Espanol nativo &middot; Ingles B1 &middot; Frances A2</span>
-        </div>
+        <article class="degree reveal">
+          <span class="degree-years">2024 — 2026</span>
+          <h3>Grado Superior en Desarrollo de Aplicaciones Web</h3>
+          <p>IES Trassierra · Modalidad bilingüe</p>
+        </article>
+        <article class="degree reveal">
+          <span class="degree-years">2022 — 2024</span>
+          <h3>Grado Medio en Sistemas Microinformáticos y Redes</h3>
+          <p>IES Marqués de Comares</p>
+        </article>
+        <article class="languages reveal">
+          <h3>Idiomas</h3>
+          <ul>
+            <li><span>Español</span><span class="meter" style="--v:1"></span><small>Nativo</small></li>
+            <li><span>Inglés</span><span class="meter" style="--v:.6"></span><small>B1</small></li>
+            <li><span>Francés</span><span class="meter" style="--v:.38"></span><small>A2</small></li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <section class="contact-band" id="contacto" aria-labelledby="contacto-title">
-      <div>
-        <span class="section-kicker">Contacto</span>
-        <h2 id="contacto-title">Hablemos de una incorporacion seria.</h2>
-        <p>
-          Busco oportunidades de desarrollo junior con Node.js y Angular, y de soporte IT, helpdesk
-          o sistemas. Combino conocimientos de software con experiencia en incidencias, equipos, redes y atención a usuarios.
-        </p>
+    <!-- Contacto -->
+    <section class="contact" id="contacto" aria-labelledby="contacto-title">
+      <div class="shell contact-inner">
+        <header class="section-head reveal">
+          <span class="section-index">06</span>
+          <span class="section-kicker">Contacto</span>
+        </header>
+        <h2 id="contacto-title" class="contact-title reveal">¿Hablamos?</h2>
+        <p class="contact-lede reveal">Busco mi siguiente paso como desarrollador web junior o en soporte IT. Si crees que encajo en tu equipo, escríbeme y te respondo pronto.</p>
+        <div class="contact-mail reveal">
+          <a href="mailto:joseab078@gmail.com" class="mail-link">joseab078@gmail.com</a>
+          <button class="copy-button" type="button" data-copy="joseab078@gmail.com">Copiar</button>
+        </div>
+        <div class="contact-links reveal">
+          <a class="button button--light magnetic" href="https://calendar.app.google/XLdZw3HhWRP7AxGh8" target="_blank" rel="noreferrer">Agendar llamada <span aria-hidden="true">↗</span></a>
+          <a class="button button--outline magnetic" href="https://www.linkedin.com/in/jos%C3%A9-burguillos-88834932a/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="button button--outline magnetic" href="https://github.com/JoseBurguillos" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+        <div class="downloads reveal">
+          <span>Currículum</span>
+          <a href="./CV_Jose_Burguillos.pdf" download>Español <span aria-hidden="true">↓</span></a>
+          <a href="./CV_Jose_Burguillos_English.pdf" download>English <span aria-hidden="true">↓</span></a>
+        </div>
       </div>
-
-      <div class="contact-links" aria-label="CV y datos de contacto">
-        <a class="contact-link" href="./CV_Jose_Burguillos_Angular_NodeJS_ATS.pdf" download>
-          CV Desarrollo Web <span>PDF ↓</span>
-        </a>
-        <a class="contact-link" href="./CV_Jose_Burguillos_Soporte_IT_ATS.pdf" download>
-          CV Soporte IT <span>PDF ↓</span>
-        </a>
-        <a class="contact-link" href="mailto:joseab078@gmail.com">
-          Email <span>joseab078@gmail.com</span>
-        </a>
-        <a class="contact-link" href="https://www.linkedin.com/in/jos%C3%A9-burguillos-88834932a/" target="_blank" rel="noreferrer">
-          LinkedIn <span>Perfil</span>
-        </a>
-        <a class="contact-link" href="https://github.com/JoseBurguillos" target="_blank" rel="noreferrer">
-          GitHub <span>JoseBurguillos</span>
-        </a>
-        <a class="contact-link" href="https://calendar.app.google/XLdZw3HhWRP7AxGh8" target="_blank" rel="noreferrer">
-          Calendar <span>Reservar</span>
-        </a>
-      </div>
+      <footer class="site-footer shell">
+        <span>© <span id="year">2026</span> José Burguillos</span>
+        <span>Hecho a mano con HTML, CSS y JavaScript</span>
+      </footer>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <span>Jose Burguillos &middot; Desarrollador Web Full Stack</span>
-    <span>Node.js &middot; Angular &middot; Soporte IT</span>
-  </footer>
+  <div class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
