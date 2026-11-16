@@ -36,4 +36,4 @@ Después, abre `http://localhost:8000`.
 
 ## Despliegue
 
-La rama `main` se publica en Vercel. El CV descargable se mantiene en `CV_Jose_Burguillos_ATS.pdf` para conservar estable el enlace público; la versión en inglés está en `CV_Jose_Burguillos_English.pdf`.
+La rama `main` se publica en Vercel. Los CV descargables son `CV_Jose_Burguillos_ES.pdf` (español) y `CV_Jose_Burguillos_EN.pdf` (inglés); `CV_Jose_Burguillos_ATS.pdf` y `CV_Jose_Burguillos_English.pdf` se mantienen como copias para no romper enlaces públicos antiguos.
