@@ -40,7 +40,7 @@ addEventListener('scroll', () => {
 onScroll();
 
 // Rotación de roles en el hero
-const roles = ['desarrollo web', 'soporte IT', 'automatización e IA', 'Angular y Node.js'];
+const roles = ['desarrollo web', 'sistemas RAG', 'automatización e IA', 'Angular y Node.js', 'soporte IT'];
 const rotatorWord = document.querySelector('.rotator-word');
 let roleIndex = 0;
 
